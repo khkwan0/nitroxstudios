@@ -4,7 +4,10 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="container footer-inner">
-    <p class="brand">Nitrox Studios</p>
+    <p class="brand">
+      <img src="/brand/logo-mark.svg" width="22" height="22" alt="" decoding="async" />
+      Nitrox Studios
+    </p>
     <nav class="footer-links" aria-label="Footer">
       <a href="#products">Products</a>
       <a href="https://bkkleague.com" target="_blank" rel="noopener noreferrer">Bangkok Pool League</a>
@@ -42,9 +45,17 @@ const year = new Date().getFullYear();
   }
 
   .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.05rem;
+  }
+
+  .brand img {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 
   .footer-links {
