@@ -38,12 +38,8 @@ const products = [
     visual: "aula",
     links: [
       {
-        label: "View on GitHub",
-        href: "https://github.com/khkwan0/aula_s98_pro_wireless",
-      },
-      {
-        label: "Releases",
-        href: "https://github.com/khkwan0/aula_s98_pro_wireless/releases",
+        label: "Product site",
+        href: "https://nitroxstudios.com/aula/",
       },
     ],
   },
@@ -61,8 +57,8 @@ const products = [
     visual: "ocr",
     links: [
       {
-        label: "View on GitHub",
-        href: "https://github.com/khkwan0/ocr",
+        label: "Get in touch",
+        href: "mailto:hello@nitroxstudios.com?subject=OCR%20Core%20Impact",
       },
     ],
   },
@@ -119,16 +115,22 @@ const products = [
                 ))}
               </ul>
               <div class="product-links">
-                {product.links.map((link, i) => (
-                  <a
-                    class:list={["btn", i === 0 ? "btn-primary" : "btn-ghost"]}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {product.links.map((link, i) => {
+                  const external =
+                    link.href.startsWith("http") &&
+                    !link.href.startsWith("https://nitroxstudios.com");
+                  return (
+                    <a
+                      class:list={["btn", i === 0 ? "btn-primary" : "btn-ghost"]}
+                      href={link.href}
+                      {...(external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
 

@@ -48,6 +48,11 @@ echo "$BODY" | grep -q 'Bangkok Pool League' || { echo "FAIL home missing BPL pr
 echo "$BODY" | grep -q 'Expo' || { echo "FAIL home missing Expo mobile app mention"; exit 1; }
 echo "$BODY" | grep -q 'apps.apple.com' || { echo "FAIL home missing App Store link"; exit 1; }
 echo "$BODY" | grep -q 'OCR Core Impact' || { echo "FAIL home missing OCR product"; exit 1; }
+echo "$BODY" | grep -q 'nitroxstudios.com/aula' || { echo "FAIL home missing AULA site link"; exit 1; }
+if echo "$BODY" | grep -q 'github.com/khkwan0/ocr'; then
+  echo "FAIL home still links private OCR repo"
+  exit 1
+fi
 echo "$BODY" | grep -q 'rel="canonical"' || { echo "FAIL home missing canonical"; exit 1; }
 echo "  OK  home content assertions"
 
