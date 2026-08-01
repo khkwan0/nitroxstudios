@@ -1,0 +1,512 @@
+---
+const products = [
+  {
+    id: "bpl",
+    name: "Bangkok Pool League",
+    tag: "Mobile + platform",
+    description:
+      "An Expo React Native app for iOS and Android that runs Bangkok’s pool league on the phone — live match scoring, teams, standings, and messaging — backed by a realtime web platform at bkkleague.com.",
+    highlights: [
+      "Native iOS & Android (Expo)",
+      "Live match scoring over WebSockets",
+      "Web standings, seasons & venue TV",
+    ],
+    visual: "bpl",
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/th/app/bangkok-pool-league/id6447631894",
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.bangkok_pool_league",
+      },
+      { label: "bkkleague.com", href: "https://bkkleague.com" },
+    ],
+  },
+  {
+    id: "aula",
+    name: "AULA S98 Pro Wireless Companion",
+    tag: "Desktop",
+    description:
+      "A privacy-first macOS companion for the AULA S98 Pro mechanical keyboard — sync the TFT screen, control media from the knob, upload custom GIFs, and manage local profiles without the cloud.",
+    highlights: [
+      "Native macOS utility",
+      "Screen sync & GIF uploads",
+      "100% local — zero telemetry",
+    ],
+    visual: "aula",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/khkwan0/aula_s98_pro_wireless",
+      },
+      {
+        label: "Releases",
+        href: "https://github.com/khkwan0/aula_s98_pro_wireless/releases",
+      },
+    ],
+  },
+  {
+    id: "ocr",
+    name: "OCR Core Impact",
+    tag: "SaaS",
+    description:
+      "A digital scanning platform that turns receipt photos and PDFs into structured spreadsheet data — Google Cloud Vision for OCR, Gemini for AI parsing, credits, client workspaces, and multi-language support.",
+    highlights: [
+      "Receipt & PDF → structured data",
+      "Vision OCR + Gemini AI fallback",
+      "Credits, clients & admin tools",
+    ],
+    visual: "ocr",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/khkwan0/ocr",
+      },
+    ],
+  },
+  {
+    id: "ccs",
+    name: "countrycitystatejson",
+    tag: "Open source",
+    description:
+      "A maintained npm package of world countries, states, and cities — simple APIs for location pickers and geo data, with TypeScript definitions and ongoing community fixes.",
+    highlights: [
+      "~21k downloads / month",
+      "Countries → states → cities",
+      "TypeScript definitions",
+    ],
+    visual: "ccs",
+    links: [
+      {
+        label: "npm package",
+        href: "https://www.npmjs.com/package/countrycitystatejson",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/khkwan0/countryCityStateJson",
+      },
+    ],
+  },
+];
+---
+
+<section class="section products" id="products" aria-labelledby="products-title">
+  <div class="container">
+    <header class="intro reveal">
+      <span class="section-label">Products</span>
+      <h2 class="section-title" id="products-title">Built and shipping.</h2>
+      <p class="section-lead">
+        Products we design, engineer, and maintain — from live platforms to open-source tools.
+      </p>
+    </header>
+
+    <div class="product-list">
+      {
+        products.map((product, index) => (
+          <article
+            class:list={["product", "reveal", index % 2 === 1 && "product-flip"]}
+            style={`--delay: ${index * 0.08}s`}
+          >
+            <div class="product-copy">
+              <span class="product-tag">{product.tag}</span>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <ul>
+                {product.highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <div class="product-links">
+                {product.links.map((link, i) => (
+                  <a
+                    class:list={["btn", i === 0 ? "btn-primary" : "btn-ghost"]}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div class="product-visual" aria-hidden="true">
+              {product.visual === "aula" && (
+                <div class="aula-shots">
+                  <img
+                    src="/products/aula/screen_0.png"
+                    alt=""
+                    width="1280"
+                    height="800"
+                    loading="lazy"
+                  />
+                  <img
+                    class="aula-secondary"
+                    src="/products/aula/screen_2.png"
+                    alt=""
+                    width="1280"
+                    height="800"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              {product.visual === "bpl" && (
+                <div class="phone" aria-hidden="true">
+                  <div class="phone-notch" />
+                  <div class="phone-screen">
+                    <p class="panel-kicker">Bangkok Pool League</p>
+                    <p class="phone-label">Live match</p>
+                    <p class="panel-score">
+                      Team A <em>5</em>
+                      <span>—</span>
+                      <em>4</em> Team B
+                    </p>
+                    <div class="bars">
+                      <span style="width: 72%" />
+                      <span style="width: 54%" />
+                      <span style="width: 88%" />
+                    </div>
+                    <p class="panel-meta">iOS · Android · realtime scores</p>
+                  </div>
+                </div>
+              )}
+              {product.visual === "ocr" && (
+                <div class="panel panel-ocr">
+                  <div class="panel-header">
+                    <span class="dot" />
+                    <span class="dot" />
+                    <span class="dot" />
+                    <span class="url">scan → structure</span>
+                  </div>
+                  <div class="panel-body">
+                    <p class="panel-kicker">OCR Core Impact</p>
+                    <div class="ocr-flow">
+                      <span>Receipt.pdf</span>
+                      <span class="ocr-arrow">→</span>
+                      <span>Vision</span>
+                      <span class="ocr-arrow">→</span>
+                      <span>Gemini</span>
+                      <span class="ocr-arrow">→</span>
+                      <span>JSON</span>
+                    </div>
+                    <pre class="ocr-sample"><code>{`{
+  "Store Name": "Sample Store",
+  "Receipt Date": "15/01/2025",
+  "Invoice Total": "123.45"
+}`}</code></pre>
+                    <p class="panel-meta">Credits · clients · multi-language</p>
+                  </div>
+                </div>
+              )}
+              {product.visual === "ccs" && (
+                <div class="panel panel-ccs">
+                  <pre><code>{`const db = require('countrycitystatejson')
+
+db.getCountries()
+db.getStatesByShort('TH')
+db.getCities('TH', 'Bangkok')`}</code></pre>
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    margin-bottom: var(--space-xl);
+  }
+
+  .product-list {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    transition-delay: var(--delay, 0s);
+  }
+
+  .product-flip .product-copy {
+    order: 2;
+  }
+
+  .product-flip .product-visual {
+    order: 1;
+  }
+
+  .product-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.75rem;
+  }
+
+  .product-copy h3 {
+    font-size: clamp(1.45rem, 2.8vw, 2rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .product-copy p {
+    color: var(--ink-muted);
+    margin-bottom: 1.1rem;
+    max-width: 42ch;
+  }
+
+  .product-copy ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .product-copy li {
+    position: relative;
+    padding-left: 1.15rem;
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+
+  .product-copy li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .product-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .product-visual {
+    min-height: 16rem;
+  }
+
+  .aula-shots {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  .aula-shots img {
+    width: 100%;
+  }
+
+  .aula-secondary {
+    position: absolute;
+    width: 58%;
+    right: 6%;
+    bottom: -8%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    opacity: 0.95;
+  }
+
+  .phone {
+    width: min(100%, 17rem);
+    margin-inline: auto;
+    border-radius: 1.75rem;
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(160deg, rgba(46, 196, 182, 0.1), transparent 45%),
+      var(--bg-elevated);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    padding: 0.65rem;
+  }
+
+  .phone-notch {
+    width: 35%;
+    height: 0.35rem;
+    margin: 0.35rem auto 0.85rem;
+    border-radius: 999px;
+    background: rgba(122, 147, 163, 0.45);
+  }
+
+  .phone-screen {
+    padding: 0.5rem 0.85rem 1.5rem;
+  }
+
+  .phone-label {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background:
+      linear-gradient(160deg, rgba(46, 196, 182, 0.08), transparent 40%),
+      var(--bg-elevated);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    min-height: 100%;
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--steel);
+  }
+
+  .dot:nth-child(1) {
+    background: #f87171;
+  }
+  .dot:nth-child(2) {
+    background: #fbbf24;
+  }
+  .dot:nth-child(3) {
+    background: #34d399;
+  }
+
+  .url {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  .panel-body {
+    padding: 1.75rem 1.5rem 2rem;
+  }
+
+  .panel-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .panel-score {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .panel-score em {
+    font-style: normal;
+    color: var(--teal-bright);
+    margin-inline: 0.25rem;
+  }
+
+  .panel-score span {
+    color: var(--steel);
+    margin-inline: 0.35rem;
+  }
+
+  .bars {
+    display: grid;
+    gap: 0.55rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .bars span {
+    display: block;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--teal), var(--cyan));
+    opacity: 0.85;
+  }
+
+  .panel-meta {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+
+  .panel-ccs {
+    padding: 1.5rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--teal-bright);
+  }
+
+  .panel-ccs pre {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .panel-ccs code {
+    font: inherit;
+  }
+
+  .ocr-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    margin-bottom: 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .ocr-arrow {
+    color: var(--teal);
+  }
+
+  .ocr-sample {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid var(--line);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--teal-bright);
+    overflow-x: auto;
+  }
+
+  .ocr-sample code {
+    font: inherit;
+  }
+
+  @media (max-width: 820px) {
+    .product,
+    .product-flip {
+      grid-template-columns: 1fr;
+    }
+
+    .product-flip .product-copy,
+    .product-flip .product-visual {
+      order: initial;
+    }
+
+    .aula-secondary {
+      display: none;
+    }
+  }
+</style>

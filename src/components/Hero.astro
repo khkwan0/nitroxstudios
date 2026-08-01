@@ -1,0 +1,190 @@
+---
+---
+
+<section class="hero" id="top" aria-labelledby="brand">
+  <div class="hero-atmosphere" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="grid"></div>
+    <div class="depth"></div>
+  </div>
+
+  <div class="container hero-content">
+    <p class="brand" id="brand">Nitrox Studios</p>
+    <h1 class="headline">Software engineered for the real world.</h1>
+    <p class="support">
+      We design and build web, mobile, and backend systems that teams rely on every day.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#products">View products</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    padding-top: 5.5rem;
+    padding-bottom: clamp(3rem, 8vh, 5rem);
+    overflow: hidden;
+  }
+
+  .hero-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 80% 55% at 70% 15%, rgba(46, 196, 182, 0.18), transparent 55%),
+      radial-gradient(ellipse 60% 50% at 10% 80%, rgba(56, 189, 248, 0.12), transparent 50%),
+      linear-gradient(165deg, #041018 0%, #0a1c28 45%, #07141c 100%);
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.7;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+
+  .orb-a {
+    width: min(48vw, 28rem);
+    height: min(48vw, 28rem);
+    top: 8%;
+    right: 5%;
+    background: radial-gradient(circle, rgba(46, 196, 182, 0.45), transparent 70%);
+  }
+
+  .orb-b {
+    width: min(40vw, 22rem);
+    height: min(40vw, 22rem);
+    bottom: 10%;
+    left: -5%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%);
+    animation-delay: -6s;
+    animation-duration: 22s;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(122, 147, 163, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122, 147, 163, 0.07) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 75%);
+    animation: grid-shift 28s linear infinite;
+  }
+
+  .depth {
+    position: absolute;
+    inset: auto 0 0;
+    height: 40%;
+    background: linear-gradient(to top, var(--bg-deep), transparent);
+  }
+
+  .hero-content {
+    max-width: 40rem;
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 8vw, 5.25rem);
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin: 0 0 1.25rem;
+    background: linear-gradient(120deg, var(--ink) 20%, var(--teal-bright) 55%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: brand-in 1s var(--ease) both;
+  }
+
+  .headline {
+    font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+    font-weight: 600;
+    color: var(--ink);
+    max-width: 22ch;
+    margin-bottom: 1rem;
+    animation: rise 0.9s var(--ease) 0.15s both;
+  }
+
+  .support {
+    color: var(--ink-muted);
+    font-size: 1.1rem;
+    max-width: 36ch;
+    margin-bottom: 1.75rem;
+    animation: rise 0.9s var(--ease) 0.28s both;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    animation: rise 0.9s var(--ease) 0.4s both;
+  }
+
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(-4%, 6%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes grid-shift {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 72px 72px;
+    }
+  }
+
+  @keyframes brand-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb,
+    .grid,
+    .brand,
+    .headline,
+    .support,
+    .cta {
+      animation: none;
+    }
+
+    .brand {
+      filter: none;
+      opacity: 1;
+    }
+  }
+</style>

@@ -1,0 +1,14 @@
+[Unit]
+Description=Nitrox Studios www GitHub webhook (local CI/CD)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/dev/nitroxstudios.com/ci
+EnvironmentFile=%h/.config/nitroxstudios-www/webhook.env
+ExecStart=/usr/bin/python3 %h/dev/nitroxstudios.com/ci/github-webhook.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

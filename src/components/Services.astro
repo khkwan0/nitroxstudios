@@ -1,0 +1,68 @@
+---
+---
+
+<section class="section services" id="services" aria-labelledby="services-title">
+  <div class="container services-inner reveal">
+    <div>
+      <span class="section-label">Services</span>
+      <h2 class="section-title" id="services-title">Engineering partners, not just vendors.</h2>
+      <p class="section-lead">
+        Need something custom? We build and ship production software end to end.
+      </p>
+    </div>
+    <ul class="service-list">
+      <li>
+        <h3>Web platforms</h3>
+        <p>Product sites, dashboards, and APIs with realtime features when it matters.</p>
+      </li>
+      <li>
+        <h3>Mobile apps</h3>
+        <p>iOS and Android experiences that stay in sync with your backend systems.</p>
+      </li>
+      <li>
+        <h3>Backend systems</h3>
+        <p>Databases, auth, messaging, and infrastructure that hold up under real use.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    border-block: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse 50% 80% at 100% 50%, rgba(56, 189, 248, 0.06), transparent 55%),
+      var(--bg);
+  }
+
+  .services-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .service-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .service-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .service-list p {
+    color: var(--ink-muted);
+    max-width: 36ch;
+  }
+
+  @media (max-width: 760px) {
+    .services-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
