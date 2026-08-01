@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nitroxstudios.com/sitemap.xml
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://nitroxstudios.com/sitemap-index.xml

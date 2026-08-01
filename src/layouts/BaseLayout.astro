@@ -4,21 +4,61 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  ogType?: string;
 }
 
+const SITE = "https://nitroxstudios.com";
+const DEFAULT_DESCRIPTION =
+  "Nitrox Studios is a software engineering company building web platforms, mobile apps, and backend systems — including Bangkok Pool League, AULA keyboard tools, OCR Core Impact, and open-source packages.";
+
 const {
-  title = "Nitrox Studios",
-  description = "Nitrox Studios builds software for the real world — web, mobile, and backend systems that ship.",
+  title = "Nitrox Studios — Software Engineering Company",
+  description = DEFAULT_DESCRIPTION,
+  canonicalPath = "/",
+  noindex = false,
+  ogType = "website",
 } = Astro.props;
 
-const canonical = "https://nitroxstudios.com/";
-const jsonLd = {
+const canonical = new URL(canonicalPath, SITE).href;
+const ogImage = new URL("/og-image.png", SITE).href;
+
+const organizationLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Nitrox Studios",
-  url: canonical,
-  description,
+  url: SITE,
+  logo: new URL("/favicon.svg", SITE).href,
+  description: DEFAULT_DESCRIPTION,
+  email: "hello@nitroxstudios.com",
+  sameAs: [
+    "https://bkkleague.com",
+    "https://nitroxstudios.com/aula/",
+    "https://www.npmjs.com/package/countrycitystatejson",
+    "https://github.com/khkwan0/countryCityStateJson",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hello@nitroxstudios.com",
+    contactType: "sales",
+  },
 };
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Nitrox Studios",
+  url: SITE,
+  description: DEFAULT_DESCRIPTION,
+  publisher: {
+    "@type": "Organization",
+    name: "Nitrox Studios",
+    url: SITE,
+  },
+};
+
+const jsonLd = [organizationLd, websiteLd];
 ---
 
 <!doctype html>
@@ -27,16 +67,35 @@ const jsonLd = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+    <meta name="author" content="Nitrox Studios" />
+    <meta name="theme-color" content="#061018" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
+
+    <meta property="og:site_name" content="Nitrox Studios" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Nitrox Studios — Software engineered for the real world" />
+    <meta property="og:image:width" content="1536" />
+    <meta property="og:image:height" content="1024" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Nitrox Studios — Software engineered for the real world" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/og-image.png" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

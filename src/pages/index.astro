@@ -6,11 +6,15 @@ import Products from "../components/Products.astro";
 import Services from "../components/Services.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+
+const title = "Nitrox Studios — Software Engineering Company";
+const description =
+  "Nitrox Studios builds production software: Bangkok Pool League (iOS & Android), AULA S98 Pro Companion, OCR Core Impact, and countrycitystatejson. Custom web, mobile, and backend engineering.";
 ---
 
-<BaseLayout title="Nitrox Studios — Software engineered for the real world">
+<BaseLayout title={title} description={description} canonicalPath="/">
   <Nav />
-  <main>
+  <main id="main">
     <Hero />
     <Products />
     <Services />

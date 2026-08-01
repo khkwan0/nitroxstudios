@@ -10,8 +10,8 @@
   </div>
 
   <div class="container hero-content">
-    <p class="brand" id="brand">Nitrox Studios</p>
-    <h1 class="headline">Software engineered for the real world.</h1>
+    <h1 class="brand" id="brand">Nitrox Studios</h1>
+    <p class="headline">Software engineered for the real world.</p>
     <p class="support">
       We design and build web, mobile, and backend systems that teams rely on every day.
     </p>
@@ -107,11 +107,14 @@
   }
 
   .headline {
+    font-family: var(--font-display);
     font-size: clamp(1.35rem, 3.2vw, 1.85rem);
     font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
     color: var(--ink);
     max-width: 22ch;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
     animation: rise 0.9s var(--ease) 0.15s both;
   }
 

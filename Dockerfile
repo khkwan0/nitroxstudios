@@ -18,7 +18,8 @@ COPY --from=build /app/dist/ /usr/share/nginx/html/
 
 RUN test -f /usr/share/nginx/html/index.html \
  && test -f /usr/share/nginx/html/robots.txt \
- && test -f /usr/share/nginx/html/sitemap.xml \
+ && test -f /usr/share/nginx/html/sitemap-index.xml \
+ && test -f /usr/share/nginx/html/og-image.png \
  && test -f /usr/share/nginx/html/favicon.svg
 
 EXPOSE 80
