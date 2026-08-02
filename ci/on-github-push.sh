@@ -5,7 +5,7 @@ set -euo pipefail
 
 DEPLOY_ROOT="${DEPLOY_ROOT:-/home/ken/dev/nitroxstudios.com}"
 LOCK_FILE="${LOCK_FILE:-/tmp/nitroxstudios-www-deploy.lock}"
-BRANCH="${WEBHOOK_BRANCH:-main}"
+BRANCH="${WEBHOOK_BRANCH:-master}"
 LOG_DIR="${LOG_DIR:-/home/ken/.local/share/nitroxstudios-www}"
 mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/deploy.log"

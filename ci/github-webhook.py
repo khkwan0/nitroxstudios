@@ -24,7 +24,7 @@ DEPLOY_SCRIPT = os.environ.get(
     "DEPLOY_SCRIPT",
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "on-github-push.sh"),
 )
-BRANCH_REF = os.environ.get("WEBHOOK_BRANCH_REF", "refs/heads/main")
+BRANCH_REF = os.environ.get("WEBHOOK_BRANCH_REF", "refs/heads/master")
 
 logging.basicConfig(
     level=logging.INFO,

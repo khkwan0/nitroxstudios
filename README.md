@@ -1,6 +1,6 @@
 # Nitrox Studios — company site
 
-Astro marketing site for [nitroxstudios.com](https://nitroxstudios.com), plus a **fully self-hosted** CI/CD path that builds and deploys **on this host** when GitHub pushes to `main`. No GitHub Actions runners, no Vercel/Netlify/Cloudflare Pages.
+Astro marketing site for [nitroxstudios.com](https://nitroxstudios.com), plus a **fully self-hosted** CI/CD path that builds and deploys **on this host** when GitHub pushes to `master`. No GitHub Actions runners, no Vercel/Netlify/Cloudflare Pages.
 
 ## What’s here
 
@@ -41,7 +41,7 @@ bash ci/pipeline.sh all
 
 ## Self-hosted CI/CD (GitHub webhook → local build)
 
-On push to `main`, GitHub POSTs to this host. A local listener verifies the HMAC secret, pulls `origin/main`, then runs `ci/pipeline.sh` (Docker image build + compose roll) on **this machine**.
+On push to `master`, GitHub POSTs to this host. A local listener verifies the HMAC secret, pulls `origin/master`, then runs `ci/pipeline.sh` (Docker image build + compose roll) on **this machine**.
 
 ### One-time setup on the deploy host
 
@@ -66,7 +66,7 @@ Then in GitHub → **Settings → Webhooks → Add webhook**:
 | Secret | from `~/.config/nitroxstudios-www/webhook.env` (`grep WEBHOOK_SECRET …`) |
 | Events | Just the **push** event |
 
-After that, every `git push origin main` triggers a local rebuild.
+After that, every `git push origin master` triggers a local rebuild.
 
 ```bash
 # Manual deploy without waiting for a webhook

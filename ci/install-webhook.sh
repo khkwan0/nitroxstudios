@@ -29,7 +29,8 @@ WEBHOOK_HOST=127.0.0.1
 WEBHOOK_PORT=9002
 DEPLOY_ROOT=$REPO_ROOT
 DEPLOY_SCRIPT=$CI_DIR/on-github-push.sh
-WEBHOOK_BRANCH_REF=refs/heads/main
+WEBHOOK_BRANCH_REF=refs/heads/master
+WEBHOOK_BRANCH=master
 EOF
   chmod 600 "$ENV_FILE"
   echo "==> created $ENV_FILE"
