@@ -55,6 +55,8 @@ BODY="$(curl -fsS http://127.0.0.1:18099/)"
 echo "$BODY" | grep -q 'Nitrox Studios' || { echo "FAIL home missing brand"; exit 1; }
 echo "$BODY" | grep -q 'Bangkok Pool League' || { echo "FAIL home missing BPL product"; exit 1; }
 echo "$BODY" | grep -q 'Expo' || { echo "FAIL home missing Expo mobile app mention"; exit 1; }
+echo "$BODY" | grep -q 'MCP' || { echo "FAIL home missing BPL MCP mention"; exit 1; }
+echo "$BODY" | grep -q 'community forum' || { echo "FAIL home missing BPL forum mention"; exit 1; }
 echo "$BODY" | grep -q 'apps.apple.com' || { echo "FAIL home missing App Store link"; exit 1; }
 echo "$BODY" | grep -q 'OCR Core Impact' || { echo "FAIL home missing OCR product"; exit 1; }
 echo "$BODY" | grep -q 'nitroxstudios.com/aula' || { echo "FAIL home missing AULA site link"; exit 1; }
