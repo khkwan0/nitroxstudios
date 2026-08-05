@@ -9,15 +9,29 @@
     <div class="depth"></div>
   </div>
 
-  <div class="container hero-content">
-    <h1 class="brand" id="brand">Nitrox Studios</h1>
-    <p class="headline">Software engineered for the real world.</p>
-    <p class="support">
-      We design and build web, mobile, and backend systems that teams rely on every day.
-    </p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#products">View products</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+  <div class="container hero-layout">
+    <div class="hero-content">
+      <h1 class="brand" id="brand">Nitrox Studios</h1>
+      <p class="headline">Software engineered for the real world.</p>
+      <p class="support">
+        We design and build web, mobile, and backend systems that teams rely on every day.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#products">View products</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-tank" aria-hidden="true">
+      <img
+        class="tank-art"
+        src="/brand/nitrox-tank.svg"
+        alt=""
+        width="280"
+        height="520"
+        decoding="async"
+      />
+      <div class="tank-glow"></div>
     </div>
   </div>
 </section>
@@ -88,8 +102,45 @@
     background: linear-gradient(to top, var(--bg-deep), transparent);
   }
 
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    width: min(100% - 2.5rem, var(--max));
+  }
+
   .hero-content {
     max-width: 40rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tank {
+    position: relative;
+    justify-self: end;
+    width: min(100%, 22rem);
+    margin-right: clamp(0rem, 2vw, 1.5rem);
+    animation: tank-in 1.15s var(--ease) 0.2s both;
+  }
+
+  .tank-art {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.55));
+    animation: tank-float 7s ease-in-out infinite;
+  }
+
+  .tank-glow {
+    position: absolute;
+    inset: 18% 8% 6%;
+    z-index: 0;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(46, 196, 182, 0.28), transparent 68%);
+    filter: blur(18px);
+    animation: glow-pulse 5.5s ease-in-out infinite;
   }
 
   .brand {
@@ -175,13 +226,71 @@
     }
   }
 
+  @keyframes tank-in {
+    from {
+      opacity: 0;
+      transform: translate3d(1.5rem, 1rem, 0) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes tank-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-0.65rem);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.75;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .hero-layout {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+
+    .hero-tank {
+      position: absolute;
+      right: -8%;
+      bottom: 4%;
+      width: min(42vw, 11rem);
+      margin: 0;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 34rem;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .orb,
     .grid,
     .brand,
     .headline,
     .support,
-    .cta {
+    .cta,
+    .hero-tank,
+    .tank-art,
+    .tank-glow {
       animation: none;
     }
 

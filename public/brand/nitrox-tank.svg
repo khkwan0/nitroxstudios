@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 520" fill="none" role="img" aria-label="Nitrox scuba tank">
+  <defs>
+    <linearGradient id="body" x1="70" y1="80" x2="210" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a3344"/>
+      <stop offset="35%" stop-color="#0f2130"/>
+      <stop offset="70%" stop-color="#152a38"/>
+      <stop offset="100%" stop-color="#0a1620"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="90" y1="120" x2="150" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.28"/>
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#2ec4b6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="110" y1="40" x2="170" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c5d2d9"/>
+      <stop offset="50%" stop-color="#7a93a3"/>
+      <stop offset="100%" stop-color="#4a6270"/>
+    </linearGradient>
+    <linearGradient id="band" x1="80" y1="200" x2="200" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2ec4b6"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="boot" x1="90" y1="450" x2="190" y2="510" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a2e3a"/>
+      <stop offset="100%" stop-color="#061018"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-10%" width="140%" height="120%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Floor glow -->
+  <ellipse cx="140" cy="498" rx="78" ry="14" fill="#2ec4b6" opacity="0.18"/>
+
+  <!-- Tank boot -->
+  <path d="M88 448c0 22 23 42 52 42s52-20 52-42v-8H88v8z" fill="url(#boot)"/>
+  <rect x="88" y="434" width="104" height="18" rx="4" fill="#152a38" stroke="#7a93a3" stroke-opacity="0.35"/>
+
+  <!-- Cylinder body -->
+  <path
+    d="M92 130c0-18 21-32 48-32s48 14 48 32v304c0 18-21 32-48 32s-48-14-48-32V130z"
+    fill="url(#body)"
+    stroke="#7a93a3"
+    stroke-opacity="0.45"
+    stroke-width="1.5"
+  />
+  <!-- Left highlight -->
+  <path
+    d="M104 138c2-12 16-22 36-22 4 0 8 .4 12 1.2-14 2-24 10-26 22v288c-8-4-14-12-14-22V138z"
+    fill="url(#sheen)"
+  />
+  <!-- Right edge line -->
+  <path d="M176 140v288" stroke="#5eead4" stroke-opacity="0.12" stroke-width="2"/>
+
+  <!-- Nitrox identification band -->
+  <rect x="92" y="210" width="96" height="52" fill="url(#band)" opacity="0.95"/>
+  <rect x="92" y="210" width="96" height="6" fill="#5eead4" opacity="0.55"/>
+  <rect x="92" y="256" width="96" height="6" fill="#061018" opacity="0.25"/>
+  <text
+    x="140"
+    y="242"
+    text-anchor="middle"
+    font-family="Syne, Outfit, system-ui, sans-serif"
+    font-weight="800"
+    font-size="18"
+    letter-spacing="0.18em"
+    fill="#061018"
+  >NITROX</text>
+
+  <!-- Secondary stripe -->
+  <rect x="92" y="278" width="96" height="10" fill="#38bdf8" opacity="0.35"/>
+
+  <!-- Shoulder / neck -->
+  <path
+    d="M108 118c0-10 14-18 32-18s32 8 32 18v14H108v-14z"
+    fill="#1a3344"
+    stroke="#7a93a3"
+    stroke-opacity="0.5"
+  />
+  <rect x="118" y="98" width="44" height="24" rx="6" fill="url(#steel)"/>
+
+  <!-- Valve yoke -->
+  <rect x="128" y="58" width="24" height="44" rx="5" fill="url(#steel)"/>
+  <rect x="122" y="48" width="36" height="16" rx="4" fill="#c5d2d9"/>
+  <rect x="132" y="36" width="16" height="18" rx="3" fill="#7a93a3"/>
+  <!-- Valve knob -->
+  <circle cx="140" cy="34" r="12" fill="#2ec4b6" stroke="#5eead4" stroke-width="2"/>
+  <circle cx="140" cy="34" r="5" fill="#061018" opacity="0.45"/>
+  <path d="M140 26v16M132 34h16" stroke="#e8f1f4" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Side outlet -->
+  <rect x="152" y="62" width="28" height="10" rx="3" fill="#7a93a3"/>
+  <circle cx="184" cy="67" r="7" fill="#38bdf8" opacity="0.85"/>
+  <circle cx="184" cy="67" r="3" fill="#061018" opacity="0.4"/>
+
+  <!-- Pressure gauge -->
+  <g transform="translate(168 88)">
+    <circle cx="18" cy="18" r="16" fill="#0f2130" stroke="#7a93a3" stroke-width="2"/>
+    <circle cx="18" cy="18" r="12" fill="#061018" stroke="#2ec4b6" stroke-width="1.5"/>
+    <path d="M18 18 L18 9" stroke="#5eead4" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="18" cy="18" r="2.5" fill="#38bdf8"/>
+  </g>
+
+  <!-- Spec label -->
+  <g opacity="0.85">
+    <rect x="108" y="330" width="64" height="36" rx="4" fill="#061018" fill-opacity="0.55" stroke="#7a93a3" stroke-opacity="0.35"/>
+    <text x="140" y="346" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-size="8" fill="#8aa3b0" letter-spacing="0.12em">MOD 32%</text>
+    <text x="140" y="358" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-size="8" fill="#5eead4" letter-spacing="0.08em">O‚ ENRICHED</text>
+  </g>
+
+  <!-- Rising bubbles -->
+  <g fill="#5eead4" opacity="0.55">
+    <circle cx="206" cy="160" r="4"/>
+    <circle cx="218" cy="128" r="2.5"/>
+    <circle cx="200" cy="108" r="3"/>
+    <circle cx="224" cy="88" r="2"/>
+    <circle cx="212" cy="62" r="3.5"/>
+  </g>
+</svg>
