@@ -44,6 +44,44 @@ const products = [
     ],
   },
   {
+    id: "ocr",
+    name: "OCR Core Impact",
+    tag: "SaaS",
+    description:
+      "A digital scanning platform that turns receipt photos and PDFs into structured spreadsheet data — Google Cloud Vision for OCR, Gemini for AI parsing, credits, client workspaces, and multi-language support.",
+    highlights: [
+      "Receipt & PDF → structured data",
+      "Vision OCR + Gemini AI fallback",
+      "Credits, clients & admin tools",
+    ],
+    visual: "ocr",
+    links: [
+      {
+        label: "Get in touch",
+        href: "mailto:hello@nitroxstudios.com?subject=OCR%20Core%20Impact",
+      },
+    ],
+  },
+  {
+    id: "duckhuntr",
+    name: "Duck Huntr",
+    tag: "VR game",
+    description:
+      "A VR remake of the classic duck hunt experience — built in Unity and tested on the HTC Vive, bringing arcade aim-and-shoot play into room-scale virtual reality.",
+    highlights: [
+      "Unity VR remake",
+      "HTC Vive 1.0 support",
+      "Room-scale aim & shoot",
+    ],
+    visual: "duckhuntr",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/khkwan0/duckhuntr",
+      },
+    ],
+  },
+  {
     id: "shitsue",
     name: "shitsue",
     tag: "Social blog",
@@ -60,48 +98,6 @@ const products = [
       {
         label: "GitHub",
         href: "https://github.com/khkwan0/blog",
-      },
-    ],
-  },
-  {
-    id: "meme",
-    name: "Meme Canvas",
-    tag: "Web app",
-    description:
-      "A canvas-based meme generator with a template gallery, custom image uploads, drag-and-drop text, and preview/save — including Telegram Web App integration for sharing from chat.",
-    highlights: [
-      "Template gallery & custom uploads",
-      "Draggable text & styling controls",
-      "Telegram Web App share flow",
-    ],
-    visual: "meme",
-    links: [
-      {
-        label: "Product site",
-        href: "https://nitroxstudios.com/meme/",
-      },
-      {
-        label: "GitHub",
-        href: "https://github.com/khkwan0/meme",
-      },
-    ],
-  },
-  {
-    id: "ocr",
-    name: "OCR Core Impact",
-    tag: "SaaS",
-    description:
-      "A digital scanning platform that turns receipt photos and PDFs into structured spreadsheet data — Google Cloud Vision for OCR, Gemini for AI parsing, credits, client workspaces, and multi-language support.",
-    highlights: [
-      "Receipt & PDF → structured data",
-      "Vision OCR + Gemini AI fallback",
-      "Credits, clients & admin tools",
-    ],
-    visual: "ocr",
-    links: [
-      {
-        label: "Get in touch",
-        href: "mailto:hello@nitroxstudios.com?subject=OCR%20Core%20Impact",
       },
     ],
   },
@@ -125,6 +121,29 @@ const products = [
       {
         label: "GitHub",
         href: "https://github.com/khkwan0/countryCityStateJson",
+      },
+    ],
+  },
+  {
+    id: "meme",
+    name: "Meme Canvas",
+    tag: "Web app",
+    description:
+      "A canvas-based meme generator with a template gallery, custom image uploads, drag-and-drop text, and preview/save — including Telegram Web App integration for sharing from chat.",
+    highlights: [
+      "Template gallery & custom uploads",
+      "Draggable text & styling controls",
+      "Telegram Web App share flow",
+    ],
+    visual: "meme",
+    links: [
+      {
+        label: "Product site",
+        href: "https://nitroxstudios.com/meme/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/khkwan0/meme",
       },
     ],
   },
@@ -262,6 +281,25 @@ const products = [
 }`}</code></pre>
                     <p class="panel-meta">Credits · clients · multi-language</p>
                   </div>
+                </div>
+              )}
+              {product.visual === "duckhuntr" && (
+                <div class="duck-shots">
+                  <img
+                    src="/products/duckhuntr/menu.png"
+                    alt=""
+                    width="412"
+                    height="285"
+                    loading="lazy"
+                  />
+                  <img
+                    class="duck-secondary"
+                    src="/products/duckhuntr/dog.jpg"
+                    alt=""
+                    width="1024"
+                    height="660"
+                    loading="lazy"
+                  />
                 </div>
               )}
               {product.visual === "shitsue" && (
@@ -411,6 +449,32 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
     border: 1px solid var(--line);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
     opacity: 0.95;
+  }
+
+  .duck-shots {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: visible;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  .duck-shots > img:first-child {
+    width: 100%;
+    display: block;
+    border-radius: 0.75rem;
+  }
+
+  .duck-secondary {
+    position: absolute;
+    width: 58%;
+    right: 6%;
+    bottom: -10%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
   }
 
   .phone {
@@ -657,7 +721,8 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
       order: initial;
     }
 
-    .aula-secondary {
+    .aula-secondary,
+    .duck-secondary {
       display: none;
     }
   }
