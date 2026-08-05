@@ -8,7 +8,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !page.includes("/404"),
-      customPages: ["https://nitroxstudios.com/aula/"],
+      customPages: [
+        "https://nitroxstudios.com/aula/",
+        "https://nitroxstudios.com/meme/",
+      ],
       changefreq: "weekly",
       priority: 0.7,
       serialize(item) {
@@ -17,6 +20,10 @@ export default defineConfig({
           item.changefreq = "weekly";
         }
         if (item.url === "https://nitroxstudios.com/aula/") {
+          item.priority = 0.8;
+          item.changefreq = "monthly";
+        }
+        if (item.url === "https://nitroxstudios.com/meme/") {
           item.priority = 0.8;
           item.changefreq = "monthly";
         }

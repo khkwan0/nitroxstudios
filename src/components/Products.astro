@@ -64,6 +64,29 @@ const products = [
     ],
   },
   {
+    id: "meme",
+    name: "Meme Canvas",
+    tag: "Web app",
+    description:
+      "A canvas-based meme generator with a template gallery, custom image uploads, drag-and-drop text, and preview/save — including Telegram Web App integration for sharing from chat.",
+    highlights: [
+      "Template gallery & custom uploads",
+      "Draggable text & styling controls",
+      "Telegram Web App share flow",
+    ],
+    visual: "meme",
+    links: [
+      {
+        label: "Product site",
+        href: "https://nitroxstudios.com/meme/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/khkwan0/meme",
+      },
+    ],
+  },
+  {
     id: "ocr",
     name: "OCR Core Impact",
     tag: "SaaS",
@@ -191,6 +214,25 @@ const products = [
                       <span style="width: 88%" />
                     </div>
                     <p class="panel-meta">AI agent · MCP · community forum</p>
+                  </div>
+                </div>
+              )}
+              {product.visual === "meme" && (
+                <div class="panel panel-meme">
+                  <div class="panel-header">
+                    <span class="dot" />
+                    <span class="dot" />
+                    <span class="dot" />
+                    <span class="url">nitroxstudios.com/meme</span>
+                  </div>
+                  <div class="panel-body">
+                    <p class="panel-kicker">Template + canvas</p>
+                    <div class="meme-stage">
+                      <p class="meme-line meme-top">TOP TEXT</p>
+                      <div class="meme-frame" />
+                      <p class="meme-line meme-bottom">BOTTOM TEXT</p>
+                    </div>
+                    <p class="panel-meta">Gallery · drag text · Telegram share</p>
                   </div>
                 </div>
               )}
@@ -567,6 +609,41 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
   .blog-meta {
     font-size: 0.85rem;
     color: var(--ink-muted);
+  }
+
+  .meme-stage {
+    position: relative;
+    margin-bottom: 1.1rem;
+    border-radius: 0.55rem;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: grid;
+    align-content: space-between;
+    padding: 0.85rem;
+  }
+
+  .meme-frame {
+    position: absolute;
+    inset: 18% 12%;
+    border-radius: 0.35rem;
+    background:
+      linear-gradient(135deg, rgba(46, 196, 182, 0.25), rgba(56, 189, 248, 0.12)),
+      #1a2e3a;
+    border: 1px dashed rgba(122, 147, 163, 0.45);
+  }
+
+  .meme-line {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-shadow: 0 1px 0 #000, 0 -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000;
   }
 
   @media (max-width: 820px) {
