@@ -41,12 +41,10 @@
     stroke-opacity="0.45"
     stroke-width="1.5"
   />
-  <!-- Left highlight -->
   <path
     d="M104 138c2-12 16-22 36-22 4 0 8 .4 12 1.2-14 2-24 10-26 22v288c-8-4-14-12-14-22V138z"
     fill="url(#sheen)"
   />
-  <!-- Right edge line -->
   <path d="M176 140v288" stroke="#5eead4" stroke-opacity="0.12" stroke-width="2"/>
 
   <!-- Nitrox identification band -->
@@ -64,7 +62,6 @@
     fill="#061018"
   >NITROX</text>
 
-  <!-- Secondary stripe -->
   <rect x="92" y="278" width="96" height="10" fill="#38bdf8" opacity="0.35"/>
 
   <!-- Shoulder / neck -->
@@ -80,7 +77,6 @@
   <rect x="128" y="58" width="24" height="44" rx="5" fill="url(#steel)"/>
   <rect x="122" y="48" width="36" height="16" rx="4" fill="#c5d2d9"/>
   <rect x="132" y="36" width="16" height="18" rx="3" fill="#7a93a3"/>
-  <!-- Valve knob -->
   <circle cx="140" cy="34" r="12" fill="#2ec4b6" stroke="#5eead4" stroke-width="2"/>
   <circle cx="140" cy="34" r="5" fill="#061018" opacity="0.45"/>
   <path d="M140 26v16M132 34h16" stroke="#e8f1f4" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
@@ -94,8 +90,33 @@
   <g transform="translate(168 88)">
     <circle cx="18" cy="18" r="16" fill="#0f2130" stroke="#7a93a3" stroke-width="2"/>
     <circle cx="18" cy="18" r="12" fill="#061018" stroke="#2ec4b6" stroke-width="1.5"/>
-    <path d="M18 18 L18 9" stroke="#5eead4" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="18" cy="18" r="2.5" fill="#38bdf8"/>
+    <!-- tick marks -->
+    <g stroke="#7a93a3" stroke-width="1.2" stroke-linecap="round" opacity="0.7">
+      <path d="M18 8v2.5"/>
+      <path d="M26.5 11.5l-1.8 1.8"/>
+      <path d="M28 18h-2.5"/>
+      <path d="M26.5 24.5l-1.8-1.8"/>
+      <path d="M18 28v-2.5"/>
+      <path d="M9.5 24.5l1.8-1.8"/>
+      <path d="M8 18h2.5"/>
+      <path d="M9.5 11.5l1.8 1.8"/>
+    </g>
+    <!-- needle -->
+    <g>
+      <path d="M18 18 L18 8.5" stroke="#5eead4" stroke-width="2" stroke-linecap="round">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          values="-55 18 18; 48 18 18; -20 18 18; 35 18 18; -55 18 18"
+          keyTimes="0; 0.28; 0.55; 0.78; 1"
+          dur="5.5s"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1"
+        />
+      </path>
+      <circle cx="18" cy="18" r="2.5" fill="#38bdf8"/>
+    </g>
   </g>
 
   <!-- Spec label -->
@@ -105,12 +126,40 @@
     <text x="140" y="358" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-size="8" fill="#5eead4" letter-spacing="0.08em">O2 ENRICHED</text>
   </g>
 
-  <!-- Rising bubbles -->
-  <g fill="#5eead4" opacity="0.55">
-    <circle cx="206" cy="160" r="4"/>
-    <circle cx="218" cy="128" r="2.5"/>
-    <circle cx="200" cy="108" r="3"/>
-    <circle cx="224" cy="88" r="2"/>
-    <circle cx="212" cy="62" r="3.5"/>
+  <!-- Rising bubbles (SMIL so animation works inside <img>) -->
+  <g fill="#5eead4">
+    <circle cx="206" r="4" opacity="0">
+      <animate attributeName="cy" values="190;40" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="206;214;202;210" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.7;0.55;0" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2.5;4;3" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="218" r="2.5" opacity="0">
+      <animate attributeName="cy" values="175;30" dur="4.6s" begin="0.6s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="218;224;216;222" dur="4.6s" begin="0.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.65;0.5;0" dur="4.6s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" r="3" opacity="0">
+      <animate attributeName="cy" values="200;35" dur="5.2s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="200;196;208;198" dur="5.2s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0.45;0" dur="5.2s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2;3.5;2.5" dur="5.2s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="224" r="2" opacity="0">
+      <animate attributeName="cy" values="165;25" dur="3.4s" begin="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="224;230;220;228" dur="3.4s" begin="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.7;0.4;0" dur="3.4s" begin="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="212" r="3.5" opacity="0">
+      <animate attributeName="cy" values="185;28" dur="4.1s" begin="0.3s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="212;218;208;216" dur="4.1s" begin="0.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.55;0.5;0" dur="4.1s" begin="0.3s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2.5;4;3" dur="4.1s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="230" r="2.2" opacity="0">
+      <animate attributeName="cy" values="150;22" dur="4.9s" begin="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="230;236;226;234" dur="4.9s" begin="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0.35;0" dur="4.9s" begin="2.4s" repeatCount="indefinite"/>
+    </circle>
   </g>
 </svg>
