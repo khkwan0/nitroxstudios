@@ -59,6 +59,8 @@ echo "$BODY" | grep -q 'MCP' || { echo "FAIL home missing BPL MCP mention"; exit
 echo "$BODY" | grep -q 'community forum' || { echo "FAIL home missing BPL forum mention"; exit 1; }
 echo "$BODY" | grep -q 'apps.apple.com' || { echo "FAIL home missing App Store link"; exit 1; }
 echo "$BODY" | grep -q 'OCR Core Impact' || { echo "FAIL home missing OCR product"; exit 1; }
+echo "$BODY" | grep -q 'shitsue' || { echo "FAIL home missing shitsue blog product"; exit 1; }
+echo "$BODY" | grep -q 'shitsue.com' || { echo "FAIL home missing shitsue.com link"; exit 1; }
 echo "$BODY" | grep -q 'nitroxstudios.com/aula' || { echo "FAIL home missing AULA site link"; exit 1; }
 if echo "$BODY" | grep -q 'github.com/khkwan0/ocr'; then
   echo "FAIL home still links private OCR repo"
