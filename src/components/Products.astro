@@ -39,6 +39,20 @@ const products = [
     links: [],
   },
   {
+    id: "trimco",
+    name: "Trimco",
+    tag: "Scheduling platform",
+    description:
+      "A full smart booking platform — API, admin panel, and mobile client — that fills gaps between appointments, coalesces idle time, and rearranges the day to maximize bookings. Currently applied to hair salon scheduling.",
+    highlights: [
+      "API, admin panel & mobile client",
+      "Gap-fill & schedule coalescing",
+      "Salon booking optimization",
+    ],
+    visual: "trimco",
+    links: [],
+  },
+  {
     id: "aula",
     name: "AULA S98 Pro Wireless Companion",
     tag: "Desktop",
@@ -251,29 +265,51 @@ const products = [
                 </div>
               )}
               {product.visual === "yield" && (
-                <div class="phone phone-yield" aria-hidden="true">
-                  <div class="phone-notch" />
-                  <div class="phone-screen">
-                    <p class="panel-kicker">Yield App</p>
-                    <p class="phone-label">Portfolio</p>
-                    <p class="panel-score">
-                      <em>4.82%</em> APY
-                    </p>
-                    <div class="yield-row">
-                      <span>BTC</span>
-                      <span class="yield-up">+1.24%</span>
-                    </div>
-                    <div class="yield-row">
-                      <span>ETH</span>
-                      <span class="yield-up">+0.61%</span>
-                    </div>
-                    <div class="bars">
-                      <span style="width: 78%" />
-                      <span style="width: 52%" />
-                      <span style="width: 64%" />
-                    </div>
-                    <p class="panel-meta">Biometrics · KYC · React Native</p>
+                <div class="yield-shots">
+                  <div class="yield-logo-wrap">
+                    <img
+                      src="/products/yield/logo.png"
+                      alt=""
+                      width="1024"
+                      height="500"
+                      loading="lazy"
+                    />
                   </div>
+                  <div class="phone phone-yield yield-phone">
+                    <div class="phone-notch" />
+                    <div class="phone-screen">
+                      <p class="panel-kicker">Yield App</p>
+                      <p class="phone-label">Portfolio</p>
+                      <p class="panel-score">
+                        <em>4.82%</em> APY
+                      </p>
+                      <div class="yield-row">
+                        <span>BTC</span>
+                        <span class="yield-up">+1.24%</span>
+                      </div>
+                      <div class="yield-row">
+                        <span>ETH</span>
+                        <span class="yield-up">+0.61%</span>
+                      </div>
+                      <div class="bars">
+                        <span style="width: 78%" />
+                        <span style="width: 52%" />
+                        <span style="width: 64%" />
+                      </div>
+                      <p class="panel-meta">Biometrics · KYC · React Native</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {product.visual === "trimco" && (
+                <div class="trim-logo-wrap">
+                  <img
+                    src="/products/trimco/logo.png"
+                    alt=""
+                    width="869"
+                    height="331"
+                    loading="lazy"
+                  />
                 </div>
               )}
               {product.visual === "meme" && (
@@ -553,6 +589,34 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
       var(--bg-elevated);
   }
 
+  .yield-shots {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .yield-logo-wrap {
+    border-radius: 0.75rem;
+    border: 1px solid var(--line);
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .yield-logo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .yield-phone {
+    position: absolute;
+    width: min(58%, 11.5rem);
+    right: 6%;
+    bottom: -18%;
+    margin-inline: 0;
+  }
+
   .yield-row {
     display: flex;
     justify-content: space-between;
@@ -565,6 +629,21 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
 
   .yield-up {
     color: var(--teal-bright);
+  }
+
+  .trim-logo-wrap {
+    border-radius: 0.75rem;
+    border: 1px solid var(--line);
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    padding: 1.5rem 1.75rem;
+  }
+
+  .trim-logo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .panel {
@@ -784,6 +863,18 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
     .aula-secondary,
     .duck-secondary {
       display: none;
+    }
+
+    .yield-shots {
+      margin-bottom: 0;
+    }
+
+    .yield-phone {
+      position: relative;
+      width: min(100%, 17rem);
+      right: auto;
+      bottom: auto;
+      margin: 1.25rem auto 0;
     }
   }
 </style>
