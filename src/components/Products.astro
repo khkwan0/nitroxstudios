@@ -25,6 +25,20 @@ const products = [
     ],
   },
   {
+    id: "yield",
+    name: "Yield App",
+    tag: "Mobile fintech",
+    description:
+      "A React Native iOS and Android client for Yield App — secure onboarding with biometric login and Sumsub KYC, crypto address tooling, push messaging, and a production-grade navigation stack for everyday wallet and yield workflows.",
+    highlights: [
+      "Native iOS & Android (React Native)",
+      "Biometric auth & Sumsub KYC",
+      "Crypto addresses, QR & push",
+    ],
+    visual: "yield",
+    links: [],
+  },
+  {
     id: "aula",
     name: "AULA S98 Pro Wireless Companion",
     tag: "Desktop",
@@ -233,6 +247,32 @@ const products = [
                       <span style="width: 88%" />
                     </div>
                     <p class="panel-meta">AI agent · MCP · community forum</p>
+                  </div>
+                </div>
+              )}
+              {product.visual === "yield" && (
+                <div class="phone phone-yield" aria-hidden="true">
+                  <div class="phone-notch" />
+                  <div class="phone-screen">
+                    <p class="panel-kicker">Yield App</p>
+                    <p class="phone-label">Portfolio</p>
+                    <p class="panel-score">
+                      <em>4.82%</em> APY
+                    </p>
+                    <div class="yield-row">
+                      <span>BTC</span>
+                      <span class="yield-up">+1.24%</span>
+                    </div>
+                    <div class="yield-row">
+                      <span>ETH</span>
+                      <span class="yield-up">+0.61%</span>
+                    </div>
+                    <div class="bars">
+                      <span style="width: 78%" />
+                      <span style="width: 52%" />
+                      <span style="width: 64%" />
+                    </div>
+                    <p class="panel-meta">Biometrics · KYC · React Native</p>
                   </div>
                 </div>
               )}
@@ -505,6 +545,26 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
     font-family: var(--font-display);
     font-size: 1.05rem;
     margin-bottom: 0.85rem;
+  }
+
+  .phone-yield {
+    background:
+      linear-gradient(160deg, rgba(56, 189, 248, 0.12), transparent 45%),
+      var(--bg-elevated);
+  }
+
+  .yield-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+    color: var(--ink);
+  }
+
+  .yield-up {
+    color: var(--teal-bright);
   }
 
   .panel {
