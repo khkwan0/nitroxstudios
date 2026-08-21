@@ -63,6 +63,25 @@ const products = [
     ],
   },
   {
+    id: "umpire",
+    name: "UMPIRE",
+    tag: "Monitoring platform",
+    description:
+      "Universal Monitoring Plugin & Incident Reporter — a plugin-hosted stack that probes targets, records health in SQLite, and fires alerts. Core owns the pipeline; check, scheduler, and notifier plugins do the work so you can add or swap them without changing the host.",
+    highlights: [
+      "Plugin checks, schedulers & notifiers",
+      "HTTP, ping, TCP, TLS & keyword probes",
+      "Webhook, Slack, Discord, Telegram, FCM & email",
+    ],
+    visual: "umpire",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/khkwan0/umpire",
+      },
+    ],
+  },
+  {
     id: "aula",
     name: "AULA S98 Pro Wireless Companion & Driver",
     tag: "macOS driver",
@@ -320,6 +339,37 @@ const products = [
                     height="331"
                     loading="lazy"
                   />
+                </div>
+              )}
+              {product.visual === "umpire" && (
+                <div class="umpire-card">
+                  <div class="umpire-logo-wrap">
+                    <img
+                      src="/products/umpire/logo.jpg"
+                      alt=""
+                      width="1024"
+                      height="558"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="umpire-status">
+                    <div class="umpire-row">
+                      <span class="umpire-dot up" />
+                      <span>api.prod</span>
+                      <span class="umpire-ms">42ms</span>
+                    </div>
+                    <div class="umpire-row">
+                      <span class="umpire-dot up" />
+                      <span>web.prod</span>
+                      <span class="umpire-ms">18ms</span>
+                    </div>
+                    <div class="umpire-row">
+                      <span class="umpire-dot down" />
+                      <span>db.internal</span>
+                      <span class="umpire-ms down">timeout</span>
+                    </div>
+                    <p class="panel-meta">check → record → notify</p>
+                  </div>
                 </div>
               )}
               {product.visual === "meme" && (
@@ -654,6 +704,68 @@ db.getCities('TH', 'Bangkok')`}</code></pre>
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .umpire-card {
+    border-radius: 0.75rem;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+
+  .umpire-logo-wrap {
+    background: #e6e8ea;
+  }
+
+  .umpire-logo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .umpire-status {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1rem 1.15rem 1.15rem;
+    border-top: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  .umpire-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .umpire-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+  }
+
+  .umpire-dot.up {
+    background: var(--teal-bright);
+    box-shadow: 0 0 8px rgba(46, 196, 182, 0.55);
+  }
+
+  .umpire-dot.down {
+    background: #f87171;
+    box-shadow: 0 0 8px rgba(248, 113, 113, 0.45);
+  }
+
+  .umpire-ms {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--teal-bright);
+  }
+
+  .umpire-ms.down {
+    color: #fca5a5;
   }
 
   .panel {

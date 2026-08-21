@@ -61,6 +61,8 @@ echo "$BODY" | grep -q 'apps.apple.com' || { echo "FAIL home missing App Store l
 echo "$BODY" | grep -q 'OCR Core Impact' || { echo "FAIL home missing OCR product"; exit 1; }
 echo "$BODY" | grep -q 'shitsue' || { echo "FAIL home missing shitsue blog product"; exit 1; }
 echo "$BODY" | grep -q 'shitsue.com' || { echo "FAIL home missing shitsue.com link"; exit 1; }
+echo "$BODY" | grep -q 'UMPIRE' || { echo "FAIL home missing UMPIRE product"; exit 1; }
+echo "$BODY" | grep -q 'github.com/khkwan0/umpire' || { echo "FAIL home missing UMPIRE GitHub link"; exit 1; }
 echo "$BODY" | grep -q 'Meme Canvas' || { echo "FAIL home missing Meme Canvas product"; exit 1; }
 echo "$BODY" | grep -q 'nitroxstudios.com/meme' || { echo "FAIL home missing meme product site link"; exit 1; }
 echo "$BODY" | grep -q 'nitroxstudios.com/aula' || { echo "FAIL home missing AULA site link"; exit 1; }
