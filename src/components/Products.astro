@@ -67,11 +67,11 @@ const products = [
     name: "UMPIRE",
     tag: "Monitoring platform",
     description:
-      "Universal Monitoring Plugin & Incident Reporter — a plugin-hosted stack that probes targets, records health in SQLite, and fires alerts. Core owns the pipeline; check, scheduler, and notifier plugins do the work so you can add or swap them without changing the host.",
+      "Universal Monitoring Plugin & Incident Reporter — a plugin-hosted stack that probes targets, records health in SQLite, and fires alerts. Live WebSockets and SSE keep the dashboard in sync; an MCP server plugs into Cursor and Claude; and a built-in AI agent harness (CLI + web chat) queries status, incidents, and the full API.",
     highlights: [
-      "Plugin checks, schedulers & notifiers",
-      "HTTP, ping, TCP, TLS & keyword probes",
-      "Webhook, Slack, Discord, Telegram, FCM & email",
+      "WebSocket API + live SSE updates",
+      "MCP server for Cursor, Claude & agents",
+      "Built-in AI agent harness (CLI + UI)",
     ],
     visual: "umpire",
     links: [
@@ -372,7 +372,7 @@ const products = [
                       <span>db.internal</span>
                       <span class="umpire-ms down">timeout</span>
                     </div>
-                    <p class="panel-meta">check → record → notify</p>
+                    <p class="panel-meta">WebSocket · MCP · AI agent</p>
                   </div>
                 </div>
               )}

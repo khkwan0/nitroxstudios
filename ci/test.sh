@@ -62,6 +62,9 @@ echo "$BODY" | grep -q 'OCR Core Impact' || { echo "FAIL home missing OCR produc
 echo "$BODY" | grep -q 'shitsue' || { echo "FAIL home missing shitsue blog product"; exit 1; }
 echo "$BODY" | grep -q 'shitsue.com' || { echo "FAIL home missing shitsue.com link"; exit 1; }
 echo "$BODY" | grep -q 'UMPIRE' || { echo "FAIL home missing UMPIRE product"; exit 1; }
+echo "$BODY" | grep -q 'WebSocket' || { echo "FAIL home missing UMPIRE WebSocket mention"; exit 1; }
+echo "$BODY" | grep -q 'MCP server' || { echo "FAIL home missing UMPIRE MCP server mention"; exit 1; }
+echo "$BODY" | grep -q 'AI agent harness' || { echo "FAIL home missing UMPIRE AI agent harness mention"; exit 1; }
 echo "$BODY" | grep -q 'nitroxstudios.com/umpire' || { echo "FAIL home missing UMPIRE demo link"; exit 1; }
 echo "$BODY" | grep -q 'github.com/khkwan0/umpire' || { echo "FAIL home missing UMPIRE GitHub link"; exit 1; }
 echo "$BODY" | grep -q 'Meme Canvas' || { echo "FAIL home missing Meme Canvas product"; exit 1; }
