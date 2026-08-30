@@ -67,6 +67,8 @@ echo "$BODY" | grep -q 'MCP server' || { echo "FAIL home missing UMPIRE MCP serv
 echo "$BODY" | grep -q 'AI agent harness' || { echo "FAIL home missing UMPIRE AI agent harness mention"; exit 1; }
 echo "$BODY" | grep -q 'Chrome & Firefox' || { echo "FAIL home missing UMPIRE browser extensions mention"; exit 1; }
 echo "$BODY" | grep -q 'Agent tools' || { echo "FAIL home missing UMPIRE agent tools mention"; exit 1; }
+echo "$BODY" | grep -q 'Easy plugin system' || { echo "FAIL home missing UMPIRE plugin system mention"; exit 1; }
+echo "$BODY" | grep -q 'docs/plugins.md' || { echo "FAIL home missing UMPIRE plugin guide link"; exit 1; }
 echo "$BODY" | grep -q 'nitroxstudios.com/umpire' || { echo "FAIL home missing UMPIRE demo link"; exit 1; }
 echo "$BODY" | grep -q 'github.com/khkwan0/umpire' || { echo "FAIL home missing UMPIRE GitHub link"; exit 1; }
 echo "$BODY" | grep -q 'Meme Canvas' || { echo "FAIL home missing Meme Canvas product"; exit 1; }
