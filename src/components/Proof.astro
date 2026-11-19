@@ -1,0 +1,74 @@
+---
+---
+
+<section class="proof" aria-label="Production scale">
+  <div class="container proof-grid reveal">
+    <article class="stat">
+      <p class="figure">Millions</p>
+      <p class="unit">HTTP requests per second</p>
+      <p class="caption">Ad exchange</p>
+    </article>
+    <article class="stat">
+      <p class="figure">100,000</p>
+      <p class="unit">hits per second</p>
+      <p class="caption">Global ad server</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .proof {
+    position: relative;
+    margin-top: -1px;
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+    border-block: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(46, 196, 182, 0.08), transparent 70%),
+      var(--bg-deep);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .stat {
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--teal);
+  }
+
+  .figure {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 0.55rem;
+    background: linear-gradient(120deg, var(--ink) 10%, var(--teal-bright) 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .unit {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .caption {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  @media (max-width: 640px) {
+    .proof-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

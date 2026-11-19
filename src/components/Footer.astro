@@ -4,35 +4,17 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="container footer-inner">
-    <p class="brand">
+    <a class="brand" href="/">
       <img src="/brand/logo-mark.svg" width="22" height="22" alt="" decoding="async" />
       Nitrox Studios
-    </p>
+    </a>
     <nav class="footer-links" aria-label="Footer">
-      <a href="#products">Products</a>
-      <a href="https://bkkleague.com" target="_blank" rel="noopener noreferrer">Bangkok Pool League</a>
-      <a
-        href="https://apps.apple.com/th/app/bangkok-pool-league/id6447631894"
-        target="_blank"
-        rel="noopener noreferrer"
-      >iOS app</a>
-      <a
-        href="https://play.google.com/store/apps/details?id=com.bangkok_pool_league"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Android app</a>
-      <a href="mailto:hello@nitroxstudios.com?subject=Yield%20App">Yield App</a>
-      <a href="mailto:hello@nitroxstudios.com?subject=Trimco">Trimco</a>
-      <a href="https://github.com/khkwan0/umpire" target="_blank" rel="noopener noreferrer">UMPIRE</a>
-      <a href="https://nitroxstudios.com/aula/">AULA Companion & Driver</a>
-      <a href="mailto:hello@nitroxstudios.com?subject=OCR%20Core%20Impact">OCR Core Impact</a>
-      <a href="https://github.com/khkwan0/duckhuntr" target="_blank" rel="noopener noreferrer">Duck Huntr</a>
-      <a href="https://shitsue.com" target="_blank" rel="noopener noreferrer">shitsue</a>
-      <a href="https://nitroxstudios.com/meme/">Meme Canvas</a>
-      <a href="https://www.npmjs.com/package/countrycitystatejson" target="_blank" rel="noopener noreferrer">
-        countrycitystatejson
-      </a>
-      <a href="mailto:hello@nitroxstudios.com">Contact</a>
+      <a href="/#systems">Systems</a>
+      <a href="/#infrastructure">Infrastructure</a>
+      <a href="/#advisory">Advisory</a>
+      <a class="footer-quiet" href="/software">Software</a>
+      <a href="/#contact">Contact</a>
+      <a href="mailto:hello@nitroxstudios.com">hello@nitroxstudios.com</a>
     </nav>
     <p class="copy">&copy; {year} Nitrox Studios</p>
   </div>
@@ -57,6 +39,7 @@ const year = new Date().getFullYear();
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.05rem;
+    width: fit-content;
   }
 
   .brand img {
@@ -78,6 +61,10 @@ const year = new Date().getFullYear();
 
   .footer-links a:hover {
     color: var(--teal-bright);
+  }
+
+  .footer-links a.footer-quiet {
+    color: var(--steel);
   }
 
   .copy {

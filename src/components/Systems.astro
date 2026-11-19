@@ -1,0 +1,141 @@
+---
+const systems = [
+  {
+    tag: "Ad exchange",
+    name: "Millions of requests per second",
+    description:
+      "A high-performance ad exchange built as one complete system. It handled millions of HTTP requests per second in real time, with security on the request path and an architecture shaped so that volume stayed cost-effective.",
+    themes: [
+      "Security on the real-time request path",
+      "Scale to millions of HTTP requests per second",
+      "Cost held in line with that volume",
+    ],
+  },
+  {
+    tag: "Ad server",
+    name: "Global delivery at 100,000 hits per second",
+    description:
+      "An ad server that served ads worldwide and ran as high as 100,000 hits per second. Delivery stayed up under global traffic, capacity scaled with demand, and the design kept spend tied to the load.",
+    themes: [
+      "Secure delivery of ad traffic worldwide",
+      "100,000 hits per second at peak",
+      "Cost-effective capacity for global demand",
+    ],
+  },
+];
+---
+
+<section class="section systems" id="systems" aria-labelledby="systems-title">
+  <div class="container">
+    <header class="intro reveal">
+      <span class="section-label">Systems</span>
+      <h2 class="section-title" id="systems-title">Built for the traffic.</h2>
+      <p class="section-lead">
+        Two production systems, each a complete path from request to response, designed to stay
+        secure, stay up, and stay affordable at real-time scale.
+      </p>
+    </header>
+
+    <div class="system-list">
+      {
+        systems.map((system, index) => (
+          <article class="system reveal" style={`--delay: ${index * 0.08}s`}>
+            <span class="system-tag">{system.tag}</span>
+            <h3>{system.name}</h3>
+            <p>{system.description}</p>
+            <ul>
+              {system.themes.map((theme) => (
+                <li>{theme}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .systems {
+    background:
+      radial-gradient(ellipse 55% 70% at 0% 20%, rgba(46, 196, 182, 0.07), transparent 55%),
+      var(--bg);
+  }
+
+  .intro {
+    margin-bottom: var(--space-xl);
+  }
+
+  .intro .section-lead {
+    max-width: 46ch;
+  }
+
+  .system-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .system {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background:
+      linear-gradient(165deg, rgba(46, 196, 182, 0.08), transparent 42%),
+      var(--bg-elevated);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    transition-delay: var(--delay, 0s);
+  }
+
+  .system-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.85rem;
+  }
+
+  .system h3 {
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    margin-bottom: 0.85rem;
+    max-width: 22ch;
+  }
+
+  .system p {
+    color: var(--ink-muted);
+    margin-bottom: 1.15rem;
+  }
+
+  .system ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .system li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .system li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  @media (max-width: 800px) {
+    .system-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,28 +1,42 @@
 ---
+const pillars = [
+  {
+    name: "Security",
+    description:
+      "Security is part of the system: the request path, the data, and the place it runs. Cryptologists and cybersecurity experts on our advisory board sit behind that work.",
+  },
+  {
+    name: "Scalability",
+    description:
+      "Systems built to take real-time traffic and keep serving when it surges, from exchange-scale request rates to global ad delivery.",
+  },
+  {
+    name: "Cost effectiveness",
+    description:
+      "Architecture and infrastructure chosen so performance at that volume stays affordable, on a private cloud or a public cloud as the economics require.",
+  },
+];
 ---
 
-<section class="section services" id="services" aria-labelledby="services-title">
-  <div class="container services-inner reveal">
-    <div>
-      <span class="section-label">Services</span>
-      <h2 class="section-title" id="services-title">Engineering partners, not just vendors.</h2>
+<section class="section services" id="capabilities" aria-labelledby="capabilities-title">
+  <div class="container">
+    <header class="intro reveal">
+      <span class="section-label">Capabilities</span>
+      <h2 class="section-title" id="capabilities-title">Secure, scalable, and cost&#8209;effective.</h2>
       <p class="section-lead">
-        Need something custom? We build and ship production software end to end.
+        We build the whole system — the path the traffic takes, the infrastructure under it, and
+        the cost of keeping it there.
       </p>
-    </div>
-    <ul class="service-list">
-      <li>
-        <h3>Web platforms</h3>
-        <p>Product sites, dashboards, and APIs with realtime features when it matters.</p>
-      </li>
-      <li>
-        <h3>Mobile apps</h3>
-        <p>iOS and Android experiences that stay in sync with your backend systems.</p>
-      </li>
-      <li>
-        <h3>Backend systems</h3>
-        <p>Databases, auth, messaging, and infrastructure that hold up under real use.</p>
-      </li>
+    </header>
+    <ul class="pillar-list">
+      {
+        pillars.map((pillar) => (
+          <li class="reveal">
+            <h3>{pillar.name}</h3>
+            <p>{pillar.description}</p>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
@@ -35,33 +49,38 @@
       var(--bg);
   }
 
-  .services-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: start;
+  .intro {
+    margin-bottom: var(--space-xl);
   }
 
-  .service-list {
+  .intro .section-title {
+    max-width: 20ch;
+  }
+
+  .intro .section-lead {
+    max-width: 42ch;
+  }
+
+  .pillar-list {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 1.75rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
-  .service-list h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
+  .pillar-list h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.65rem;
   }
 
-  .service-list p {
+  .pillar-list p {
     color: var(--ink-muted);
-    max-width: 36ch;
   }
 
-  @media (max-width: 760px) {
-    .services-inner {
+  @media (max-width: 800px) {
+    .pillar-list {
       grid-template-columns: 1fr;
     }
   }

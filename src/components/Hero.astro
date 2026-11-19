@@ -12,13 +12,14 @@
   <div class="container hero-layout">
     <div class="hero-content">
       <h1 class="brand" id="brand">Nitrox Studios</h1>
-      <p class="headline">Software engineered for the real world.</p>
+      <p class="headline">Systems built for massive, real&#8209;time traffic.</p>
       <p class="support">
-        We design and build web, mobile, and backend systems that teams rely on every day.
+        We design and run complete systems that stay secure, scale with demand, and stay
+        cost-effective — private clouds in secure data centers, and AWS, Azure, and Google Cloud.
       </p>
       <div class="cta">
-        <a class="btn btn-primary" href="#products">View products</a>
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <a class="btn btn-primary" href="/#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="/#systems">See the systems</a>
       </div>
     </div>
 
@@ -164,7 +165,7 @@
     letter-spacing: -0.02em;
     line-height: 1.15;
     color: var(--ink);
-    max-width: 22ch;
+    max-width: 24ch;
     margin: 0 0 1rem;
     animation: rise 0.9s var(--ease) 0.15s both;
   }
@@ -172,7 +173,7 @@
   .support {
     color: var(--ink-muted);
     font-size: 1.1rem;
-    max-width: 36ch;
+    max-width: 46ch;
     margin-bottom: 1.75rem;
     animation: rise 0.9s var(--ease) 0.28s both;
   }
@@ -267,13 +268,17 @@
 
     .hero-tank {
       position: absolute;
-      right: -8%;
-      bottom: 4%;
-      width: min(42vw, 11rem);
+      right: -6%;
+      bottom: 2%;
+      width: min(40vw, 10rem);
       margin: 0;
-      opacity: 0.55;
+      opacity: 0.45;
       pointer-events: none;
       z-index: 0;
+    }
+
+    .hero-content {
+      z-index: 2;
     }
 
     .hero-content {

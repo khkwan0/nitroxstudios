@@ -27,6 +27,10 @@ export default defineConfig({
           item.priority = 0.8;
           item.changefreq = "monthly";
         }
+        if (item.url.replace(/\/$/, "") === "https://nitroxstudios.com/software") {
+          item.priority = 0.4;
+          item.changefreq = "monthly";
+        }
         return item;
       },
     }),

@@ -1,0 +1,111 @@
+---
+const roles = [
+  {
+    name: "Cryptologists",
+    description: "World-class cryptography for systems that have to stay secure at real-time volume.",
+  },
+  {
+    name: "Cybersecurity experts",
+    description: "Security practice for infrastructure that faces the public internet at scale.",
+  },
+  {
+    name: "Database architects",
+    description: "Data architecture for workloads measured in extreme request rates.",
+  },
+  {
+    name: "Network engineers",
+    description: "Network design for global delivery and sustained high hit rates.",
+  },
+  {
+    name: "Seasoned CTOs",
+    description: "Operating judgment from leaders who have run systems at this scale.",
+  },
+];
+---
+
+<section class="section advisory" id="advisory" aria-labelledby="advisory-title">
+  <div class="container">
+    <header class="intro reveal">
+      <span class="section-label">Advisory board</span>
+      <h2 class="section-title" id="advisory-title">Specialists behind the systems.</h2>
+      <p class="section-lead">
+        World-class cryptologists, cybersecurity experts, database architects, and network
+        engineers, with seasoned CTOs on the advisory board.
+      </p>
+    </header>
+    <ul class="role-list">
+      {
+        roles.map((role) => (
+          <li class="reveal">
+            <h3>{role.name}</h3>
+            <p>{role.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .advisory {
+    border-block: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse 40% 60% at 0% 100%, rgba(56, 189, 248, 0.06), transparent 50%),
+      var(--bg);
+  }
+
+  .intro {
+    margin-bottom: var(--space-xl);
+  }
+
+  .intro .section-lead {
+    max-width: 46ch;
+  }
+
+  .role-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .role-list li {
+    grid-column: span 2;
+    padding: 1.35rem 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+  }
+
+  .role-list li:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .role-list li:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+
+  .role-list h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .role-list p {
+    color: var(--ink-muted);
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 800px) {
+    .role-list {
+      grid-template-columns: 1fr;
+    }
+
+    .role-list li,
+    .role-list li:nth-child(4),
+    .role-list li:nth-child(5) {
+      grid-column: auto;
+    }
+  }
+</style>

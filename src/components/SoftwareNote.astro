@@ -1,0 +1,59 @@
+---
+---
+
+<section class="software-note" aria-labelledby="software-note-title">
+  <div class="container software-note-inner reveal">
+    <div>
+      <h2 id="software-note-title">Software, alongside the systems.</h2>
+      <p>Products we design and maintain live on their own page.</p>
+    </div>
+    <a class="software-link" href="/software">Browse the software catalog</a>
+  </div>
+</section>
+
+<style>
+  .software-note {
+    padding-block: clamp(2.25rem, 5vw, 3.5rem);
+    background: var(--bg-deep);
+  }
+
+  .software-note-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    color: var(--steel);
+    font-size: 0.98rem;
+  }
+
+  .software-link {
+    flex-shrink: 0;
+    color: var(--steel);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(122, 147, 163, 0.45);
+    padding-bottom: 0.1rem;
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+  }
+
+  .software-link:hover,
+  .software-link:focus-visible {
+    color: var(--teal-bright);
+    border-color: var(--teal);
+  }
+
+  @media (max-width: 640px) {
+    .software-note-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

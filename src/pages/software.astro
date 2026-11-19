@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Products from "../components/Products.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "Software — Nitrox Studios";
+const description =
+  "Software designed and maintained by Nitrox Studios, alongside our systems work: Bangkok Pool League, Yield App, Trimco, UMPIRE, AULA S98 Pro Wireless Companion & Driver, OCR Core Impact, Duck Huntr, shitsue, countrycitystatejson, and Meme Canvas.";
+const imageAlt = "Nitrox Studios — Software catalog";
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/software" imageAlt={imageAlt}>
+  <Nav />
+  <main id="main">
+    <Products />
+  </main>
+  <Footer />
+</BaseLayout>
