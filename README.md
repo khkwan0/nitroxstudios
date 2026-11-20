@@ -1,6 +1,6 @@
 # Nitrox Studios — company site
 
-Astro marketing site for [nitroxstudios.com](https://nitroxstudios.com), plus a **fully self-hosted** CI/CD path that builds and deploys **on this host** when GitHub pushes to `master`. No GitHub Actions runners, no Vercel/Netlify/Cloudflare Pages.
+Astro marketing site for [nitroxstudios.com](https://nitroxstudios.com). GitHub Actions lints and tests on push to `master`, then SSHs to this host to build and roll the Docker site. No Vercel, Netlify, or Cloudflare Pages.
 
 ## What’s here
 
@@ -10,7 +10,8 @@ Astro marketing site for [nitroxstudios.com](https://nitroxstudios.com), plus a 
 | `public/` | Static assets, `robots.txt`, `sitemap.xml` |
 | `nginx/` | Container nginx config + host proxy notes |
 | `Dockerfile` / `docker-compose.yml` | Build Astro & serve with nginx in Docker |
-| `ci/` | Lint → test → deploy pipeline + GitHub webhook listener |
+| `ci/` | Lint, test, and deploy scripts |
+| `.github/workflows/ci.yml` | GitHub Actions: lint, test, SSH deploy |
 
 Default public URL: `https://nitroxstudios.com/`  
 (AULA marketing site remains at `https://nitroxstudios.com/aula/` on a separate container.)
@@ -39,42 +40,41 @@ bash ci/deploy.sh
 bash ci/pipeline.sh all
 ```
 
-## Self-hosted CI/CD (GitHub webhook → local build)
+## GitHub Actions
 
-On push to `master`, GitHub POSTs to this host. A local listener verifies the HMAC secret, pulls `origin/master`, then runs `ci/pipeline.sh` (Docker image build + compose roll) on **this machine**.
+Push or a pull request runs lint and the Docker smoke test on a GitHub-hosted runner. A push to `master` then SSHs to this machine and runs `ci/actions-deploy.sh`, which pulls `origin/master` and rolls the container on port 8099.
+
+That deploy does `git reset --hard origin/master` in this checkout. Commit local work before it runs.
 
 ### One-time setup on the deploy host
 
+Host nginx still proxies the site to the container. If that is not in place yet:
+
 ```bash
-# 1) First build + start container on :8099
 bash ci/pipeline.sh all
-
-# 2) Webhook listener (user systemd) + secret file outside the repo
-bash ci/install-webhook.sh
-
-# 3) Patch host nginx (keeps /aula/ + Certbot) + linger
 sudo bash ci/setup-host-nginx.sh
 sudo loginctl enable-linger "$USER"
 ```
 
-Then in GitHub → **Settings → Webhooks → Add webhook**:
-
-| Field | Value |
-|-------|--------|
-| Payload URL | `https://nitroxstudios.com/hooks/github/nitroxstudios` |
-| Content type | `application/json` |
-| Secret | from `~/.config/nitroxstudios-www/webhook.env` (`grep WEBHOOK_SECRET …`) |
-| Events | Just the **push** event |
-
-After that, every `git push origin master` triggers a local rebuild.
+Create the deploy key (it can only run `ci/actions-deploy.sh`):
 
 ```bash
-# Manual deploy without waiting for a webhook
-bash ci/pipeline.sh all
+bash ci/install-actions-deploy-key.sh
+```
 
-# Logs
-journalctl --user -u nitroxstudios-www-webhook -f
-tail -f ~/.local/share/nitroxstudios-www/deploy.log
+In GitHub → **Settings → Secrets and variables → Actions**, add:
+
+| Secret | Value |
+|--------|--------|
+| `DEPLOY_HOST` | `nitroxstudios.com` |
+| `DEPLOY_USER` | the user printed by the install script |
+| `DEPLOY_SSH_KEY` | contents of `~/.config/nitroxstudios-www/actions_deploy_ed25519` |
+
+After that, `git push origin master` deploys. The first successful Actions deploy turns off the old webhook listener.
+
+```bash
+# Manual deploy without waiting for Actions
+bash ci/deploy.sh
 ```
 
 Override the published port with `WWW_PORT=8080 bash ci/deploy.sh` if needed.

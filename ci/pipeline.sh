@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Full self-hosted CI/CD pipeline: lint → test → deploy.
-# Intended to run on the deploy host. No third-party CI services.
+# Lint → test → deploy.
+# GitHub Actions runs lint and test on ubuntu-latest, then SSHs here for deploy.
+# You can still run a stage by hand on this host.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
