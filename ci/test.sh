@@ -76,7 +76,7 @@ echo "$SOFTWARE" | grep -q 'UMPIRE' || { echo "FAIL software missing UMPIRE prod
 echo "$SOFTWARE" | grep -q 'WebSocket' || { echo "FAIL software missing UMPIRE WebSocket mention"; exit 1; }
 echo "$SOFTWARE" | grep -q 'MCP server' || { echo "FAIL software missing UMPIRE MCP server mention"; exit 1; }
 echo "$SOFTWARE" | grep -q 'AI agent harness' || { echo "FAIL software missing UMPIRE AI agent harness mention"; exit 1; }
-echo "$SOFTWARE" | grep -q 'Chrome & Firefox' || { echo "FAIL software missing UMPIRE browser extensions mention"; exit 1; }
+echo "$SOFTWARE" | grep -q 'Chrome &amp; Firefox' || { echo "FAIL software missing UMPIRE browser extensions mention"; exit 1; }
 echo "$SOFTWARE" | grep -q 'Agent tools' || { echo "FAIL software missing UMPIRE agent tools mention"; exit 1; }
 echo "$SOFTWARE" | grep -q 'Easy plugin system' || { echo "FAIL software missing UMPIRE plugin system mention"; exit 1; }
 echo "$SOFTWARE" | grep -q 'docs/plugins.md' || { echo "FAIL software missing UMPIRE plugin guide link"; exit 1; }
