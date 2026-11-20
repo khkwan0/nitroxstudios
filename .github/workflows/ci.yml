@@ -4,51 +4,51 @@ on:
   push:
     branches: [master]
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
-concurrency:
-  group: www-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+env:
+  CI: true
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
       - name: Lint
         run: bash ci/lint.sh
 
   test:
+    name: Test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
       - name: Build and smoke-test
         run: bash ci/test.sh
 
-  deploy:
+  ci:
+    name: CI
     needs: [lint, test]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: always()
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
-      - name: Deploy on the host
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      - name: Require lint and test
         run: |
-          set -euo pipefail
-          if [[ -z "${DEPLOY_HOST}" || -z "${DEPLOY_USER}" || -z "${DEPLOY_SSH_KEY}" ]]; then
-            echo "Set repository secrets DEPLOY_HOST, DEPLOY_USER, and DEPLOY_SSH_KEY."
-            echo "On the deploy host: bash ci/install-actions-deploy-key.sh"
-            exit 1
-          fi
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh -i ~/.ssh/deploy_key \
-            -o IdentitiesOnly=yes \
-            -o StrictHostKeyChecking=accept-new \
-            "${DEPLOY_USER}@${DEPLOY_HOST}" \
-            true
+          test "${{ needs.lint.result }}" = "success"
+          test "${{ needs.test.result }}" = "success"

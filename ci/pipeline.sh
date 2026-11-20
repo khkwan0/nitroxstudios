@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Lint → test → deploy.
-# GitHub Actions runs lint and test on ubuntu-latest, then SSHs here for deploy.
-# You can still run a stage by hand on this host.
+# GitHub Actions runs lint and test. Deploy stays on this host.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
