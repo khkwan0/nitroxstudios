@@ -14,6 +14,11 @@ import NetworkGraphic from "./NetworkGraphic.astro";
       <p class="unit">hits per second</p>
       <p class="caption">Global ad server</p>
     </article>
+    <article class="stat">
+      <p class="figure">100%</p>
+      <p class="unit">uptime</p>
+      <p class="caption">Fault-tolerant HA and DR</p>
+    </article>
     <div class="proof-net">
       <NetworkGraphic />
     </div>
@@ -33,18 +38,20 @@ import NetworkGraphic from "./NetworkGraphic.astro";
 
   .proof-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr minmax(9rem, 0.7fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 2.5rem);
     align-items: center;
   }
 
   .proof-net {
-    justify-self: end;
-    width: min(100%, 16rem);
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 14rem);
     opacity: 0.9;
   }
 
   .stat {
+    container-type: inline-size;
     padding-left: 1.25rem;
     border-left: 2px solid var(--teal);
   }
@@ -52,7 +59,8 @@ import NetworkGraphic from "./NetworkGraphic.astro";
   .figure {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    font-size: clamp(1.7rem, 14.5cqi, 3.4rem);
+    white-space: nowrap;
     letter-spacing: -0.04em;
     line-height: 0.95;
     margin-bottom: 0.55rem;
@@ -77,12 +85,25 @@ import NetworkGraphic from "./NetworkGraphic.astro";
     color: var(--teal);
   }
 
+  @media (min-width: 1100px) {
+    .proof-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(8rem, 13rem);
+    }
+
+    .proof-net {
+      grid-column: auto;
+      justify-self: end;
+      width: min(100%, 13rem);
+    }
+  }
+
   @media (max-width: 800px) {
     .proof-grid {
       grid-template-columns: 1fr;
     }
 
     .proof-net {
+      grid-column: auto;
       justify-self: start;
       width: min(100%, 14rem);
     }

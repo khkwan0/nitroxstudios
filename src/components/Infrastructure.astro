@@ -8,6 +8,11 @@ const places = [
       "Secure data centers on the east coast in Ashburn, Virginia, on the west coast in Los Angeles and Santa Clara, and in Europe in Amsterdam and Haarlem. Geo-directional load balancing sent each request to the nearest site.",
   },
   {
+    name: "Fault tolerant",
+    description:
+      "The cloud was fault tolerant. High availability kept a live path ready when a component failed. Disaster recovery covered the loss of a node or a whole data center. Together they held 100% uptime.",
+  },
+  {
     name: "Global CDN",
     description:
       "A global CDN sat in front of that private cloud and distributed content to the audience in under 100 ms.",
@@ -28,8 +33,9 @@ const places = [
         <h2 class="section-title" id="infrastructure-title">A private cloud across three regions.</h2>
         <p class="section-lead">
           The private cloud ran in secure data centers on the east coast, the west coast, and in
-          Europe. Geo-directional load balancing and a global CDN distributed content to the
-          audience in under 100 ms.
+          Europe. The design was fault tolerant: high availability (HA) and disaster recovery (DR),
+          and the service held 100% uptime. Geo-directional load balancing and a global CDN
+          distributed content to the audience in under 100 ms.
         </p>
       </div>
       <ul class="sites" aria-label="Private cloud sites">
@@ -122,7 +128,7 @@ const places = [
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
 
