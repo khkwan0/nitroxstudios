@@ -1,4 +1,6 @@
 ---
+import NetworkGraphic from "./NetworkGraphic.astro";
+
 const systems = [
   {
     tag: "Ad exchange",
@@ -15,11 +17,11 @@ const systems = [
     tag: "Ad server",
     name: "Global delivery at 100,000 hits per second",
     description:
-      "An ad server that served ads worldwide and ran as high as 100,000 hits per second. Delivery stayed up under global traffic, capacity scaled with demand, and the design kept spend tied to the load.",
+      "An ad server that served ads worldwide and ran as high as 100,000 hits per second. Geo-directional load balancing and a global CDN put that content in front of the audience in under 100 ms, while capacity scaled with demand and spend stayed tied to the load.",
     themes: [
       "Secure delivery of ad traffic worldwide",
       "100,000 hits per second at peak",
-      "Cost-effective capacity for global demand",
+      "Global CDN delivery in under 100 ms",
     ],
   },
   {
@@ -50,6 +52,7 @@ const systems = [
 <section class="section systems" id="systems" aria-labelledby="systems-title">
   <div class="container">
     <header class="intro reveal">
+      <div class="intro-copy">
       <span class="section-label">Systems</span>
       <h2 class="section-title" id="systems-title">
         Built for the traffic. <span>Secured for fintech.</span>
@@ -59,6 +62,10 @@ const systems = [
         Ad exchange and ad server systems that carry real-time volume, fintech applications
         where security is the requirement, and systems for AI workflows and agents.
       </p>
+      </div>
+      <div class="intro-net">
+        <NetworkGraphic />
+      </div>
     </header>
 
     <div class="system-list">
@@ -88,7 +95,16 @@ const systems = [
   }
 
   .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(8rem, 16rem);
+    gap: clamp(1rem, 4vw, 3rem);
+    align-items: center;
     margin-bottom: var(--space-xl);
+  }
+
+  .intro-net {
+    width: min(100%, 16rem);
+    justify-self: end;
   }
 
   .intro .section-title {
@@ -167,8 +183,14 @@ const systems = [
   }
 
   @media (max-width: 800px) {
+    .intro,
     .system-list {
       grid-template-columns: 1fr;
+    }
+
+    .intro-net {
+      justify-self: start;
+      width: min(100%, 14rem);
     }
   }
 </style>

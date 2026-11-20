@@ -1,0 +1,194 @@
+---
+interface Props {
+  variant?: "field" | "sites";
+}
+
+const { variant = "field" } = Astro.props;
+
+const field = {
+  viewBox: "0 0 360 220",
+  nodes: [
+    [48, 46],
+    [150, 28],
+    [250, 70],
+    [312, 36],
+    [78, 128],
+    [176, 150],
+    [286, 138],
+    [128, 196],
+    [236, 198],
+  ],
+  links: [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [0, 4],
+    [1, 4],
+    [1, 5],
+    [2, 5],
+    [2, 6],
+    [3, 6],
+    [4, 5],
+    [5, 6],
+    [4, 7],
+    [5, 7],
+    [5, 8],
+    [6, 8],
+    [7, 8],
+  ],
+};
+
+const sites = {
+  viewBox: "0 0 720 300",
+  nodes: [
+    { x: 92, y: 78, label: "Santa Clara", place: "West coast" },
+    { x: 128, y: 198, label: "Los Angeles", place: "West coast" },
+    { x: 360, y: 124, label: "Ashburn", place: "Virginia" },
+    { x: 590, y: 86, label: "Amsterdam", place: "Haarlem" },
+  ],
+  links: [
+    [0, 1],
+    [0, 2],
+    [1, 2],
+    [2, 3],
+    [0, 3],
+  ],
+};
+
+const graphic = variant === "sites" ? sites : field;
+---
+
+<svg
+  class:list={["net", variant]}
+  viewBox={graphic.viewBox}
+  fill="none"
+  aria-hidden="true"
+>
+  {
+    graphic.links.map(([from, to], index) => {
+      const a = graphic.nodes[from];
+      const b = graphic.nodes[to];
+      const ax = Array.isArray(a) ? a[0] : a.x;
+      const ay = Array.isArray(a) ? a[1] : a.y;
+      const bx = Array.isArray(b) ? b[0] : b.x;
+      const by = Array.isArray(b) ? b[1] : b.y;
+      return (
+        <path
+          class="link"
+          style={`--lag: ${index * 0.35}s`}
+          d={`M${ax} ${ay} L${bx} ${by}`}
+        />
+      );
+    })
+  }
+  {
+    graphic.nodes.map((node, index) => {
+      const x = Array.isArray(node) ? node[0] : node.x;
+      const y = Array.isArray(node) ? node[1] : node.y;
+      return (
+        <g class="node" style={`--lag: ${index * 0.4}s`}>
+          <circle class="halo" cx={x} cy={y} r={variant === "sites" ? 16 : 10} />
+          <circle class="core" cx={x} cy={y} r={variant === "sites" ? 5 : 3.5} />
+          {
+            !Array.isArray(node) && (
+              <text x={x} y={y + 36} text-anchor="middle">
+                <tspan class="label" x={x} dy="0">
+                  {node.label}
+                </tspan>
+                <tspan class="place" x={x} dy="16">
+                  {node.place}
+                </tspan>
+              </text>
+            )
+          }
+        </g>
+      );
+    })
+  }
+</svg>
+
+<style>
+  .net {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .link {
+    stroke: rgba(94, 234, 212, 0.55);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-dasharray: 5 9;
+    animation: flow 2.6s linear infinite;
+    animation-delay: var(--lag, 0s);
+  }
+
+  .sites .link {
+    stroke-width: 1.6;
+  }
+
+  .halo {
+    fill: rgba(46, 196, 182, 0.16);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse 2.8s ease-in-out infinite;
+    animation-delay: var(--lag, 0s);
+  }
+
+  .core {
+    fill: var(--teal-bright);
+  }
+
+  .label {
+    fill: var(--ink);
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .place {
+    fill: var(--teal);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @keyframes flow {
+    to {
+      stroke-dashoffset: -56;
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(0.85);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .sites .label,
+    .sites .place {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link,
+    .halo {
+      animation: none;
+    }
+
+    .link {
+      stroke-dasharray: none;
+    }
+  }
+</style>

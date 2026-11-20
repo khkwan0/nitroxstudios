@@ -1,4 +1,5 @@
 ---
+import NetworkGraphic from "./NetworkGraphic.astro";
 ---
 
 <section class="proof" aria-label="Production scale">
@@ -13,6 +14,9 @@
       <p class="unit">hits per second</p>
       <p class="caption">Global ad server</p>
     </article>
+    <div class="proof-net">
+      <NetworkGraphic />
+    </div>
   </div>
 </section>
 
@@ -29,8 +33,15 @@
 
   .proof-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 4vw, 4rem);
+    grid-template-columns: 1fr 1fr minmax(9rem, 0.7fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+  }
+
+  .proof-net {
+    justify-self: end;
+    width: min(100%, 16rem);
+    opacity: 0.9;
   }
 
   .stat {
@@ -66,9 +77,14 @@
     color: var(--teal);
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 800px) {
     .proof-grid {
       grid-template-columns: 1fr;
+    }
+
+    .proof-net {
+      justify-self: start;
+      width: min(100%, 14rem);
     }
   }
 </style>
