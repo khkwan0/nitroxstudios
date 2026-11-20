@@ -22,6 +22,28 @@ const systems = [
       "Cost-effective capacity for global demand",
     ],
   },
+  {
+    tag: "Fintech",
+    name: "Security for financial applications",
+    description:
+      "Fintech systems where security carries the design. Identity, funds, and customer data stay protected from the request path through to the infrastructure the application runs on.",
+    themes: [
+      "Security designed into the application",
+      "Identity, funds, and customer data protected",
+      "Cryptologists and cybersecurity experts on the advisory board",
+    ],
+  },
+  {
+    tag: "AI",
+    name: "Workflows and agents",
+    description:
+      "Systems for AI workflows and agents. The path from a request to a model, the tools an agent calls, and the infrastructure under them, built to stay secure and stay up.",
+    themes: [
+      "Workflows and agents as complete systems",
+      "Secure paths for model calls and tool use",
+      "Scale and cost held to the workload",
+    ],
+  },
 ];
 ---
 
@@ -29,10 +51,13 @@ const systems = [
   <div class="container">
     <header class="intro reveal">
       <span class="section-label">Systems</span>
-      <h2 class="section-title" id="systems-title">Built for the traffic.</h2>
+      <h2 class="section-title" id="systems-title">
+        Built for the traffic. <span>Secured for fintech.</span>
+        <span>Systems for AI workflows.</span>
+      </h2>
       <p class="section-lead">
-        Two production systems, each a complete path from request to response, designed to stay
-        secure, stay up, and stay affordable at real-time scale.
+        Ad exchange and ad server systems that carry real-time volume, fintech applications
+        where security is the requirement, and systems for AI workflows and agents.
       </p>
     </header>
 
@@ -66,8 +91,16 @@ const systems = [
     margin-bottom: var(--space-xl);
   }
 
+  .intro .section-title {
+    max-width: 28ch;
+  }
+
+  .intro .section-title span {
+    display: block;
+  }
+
   .intro .section-lead {
-    max-width: 46ch;
+    max-width: 52ch;
   }
 
   .system-list {
