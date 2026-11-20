@@ -1,9 +1,32 @@
 ---
+interface Props {
+  audience?: "commercial" | "government";
+}
+
+const { audience = "commercial" } = Astro.props;
+const home = audience === "government" ? "/government" : "/";
+const links =
+  audience === "government"
+    ? [
+        { href: "/government#competencies", label: "Competencies" },
+        { href: "/government#infrastructure", label: "Infrastructure" },
+        { href: "/government#performance", label: "Past performance" },
+        { href: "/government#security", label: "Security" },
+        { href: "/government#contact", label: "Contact" },
+      ]
+    : [
+        { href: "/#systems", label: "Systems" },
+        { href: "/#infrastructure", label: "Infrastructure" },
+        { href: "/#advisory", label: "Advisory" },
+        { href: "/government", label: "Government" },
+        { href: "/#contact", label: "Contact" },
+        { href: "/software", label: "Software", quiet: true },
+      ];
 ---
 
 <header class="nav">
   <div class="container nav-inner">
-    <a class="wordmark" href="/" aria-label="Nitrox Studios home">
+    <a class="wordmark" href={home} aria-label={audience === "government" ? "Nitrox Studios government" : "Nitrox Studios home"}>
       <img
         class="mark"
         src="/brand/logo-mark.svg"
@@ -15,11 +38,13 @@
       <span class="name">Nitrox Studios</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/#systems">Systems</a>
-      <a href="/#infrastructure">Infrastructure</a>
-      <a href="/#advisory">Advisory</a>
-      <a href="/#contact">Contact</a>
-      <a class="nav-quiet" href="/software">Software</a>
+      {
+        links.map((link) => (
+          <a href={link.href} class={link.quiet ? "nav-quiet" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
   </div>
 </header>
@@ -87,7 +112,7 @@
     font-weight: 400;
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 980px) {
     .nav-inner {
       flex-wrap: wrap;
       row-gap: 0.65rem;

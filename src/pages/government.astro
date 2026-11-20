@@ -1,0 +1,390 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "Government — Nitrox Studios LLC";
+const description =
+  "Nitrox Studios LLC designs fault-tolerant systems for federal and state missions. High availability and disaster recovery, protection for identity and financial data, and a United States private cloud in Ashburn, Los Angeles, and Santa Clara. SAM.gov UEI RCEXYHX2NBH7.";
+
+const competencies = [
+  {
+    name: "Real-time systems",
+    detail:
+      "Complete systems for peaks public agencies already run: filing deadlines, enrollment surges, payment integrity, and emergency traffic.",
+  },
+  {
+    name: "Identity and financial data",
+    detail:
+      "Security for identity, funds, and customer data, from the request path through the infrastructure the application runs on.",
+  },
+  {
+    name: "Operational workflows",
+    detail:
+      "Systems for operational workflows and agents, including the path from a request to a model and the tools that workflow calls.",
+  },
+  {
+    name: "High availability and disaster recovery",
+    detail:
+      "Fault-tolerant design. High availability keeps a live path ready when a component fails. Disaster recovery covers the loss of a node or a data center.",
+  },
+];
+
+const sites = ["Ashburn, Virginia", "Los Angeles", "Santa Clara"];
+
+const controls = [
+  {
+    name: "NIST SP 800-53",
+    detail: "Control families that define the authorization boundary.",
+  },
+  {
+    name: "FedRAMP and StateRAMP",
+    detail:
+      "Government cloud systems are built so that boundary can be assessed. The agency grants the authorization.",
+  },
+  {
+    name: "NIST SP 800-171 and CMMC",
+    detail:
+      "Controlled unclassified information is designed to SP 800-171, the baseline CMMC assesses.",
+  },
+  {
+    name: "CJIS Security Policy",
+    detail: "Criminal justice information is designed to the CJIS requirements.",
+  },
+  {
+    name: "IRS Publication 1075",
+    detail: "Federal tax information is designed to Publication 1075.",
+  },
+];
+
+const performance = [
+  {
+    name: "Ad exchange",
+    detail:
+      "A commercial ad exchange that handled millions of HTTP requests per second in real time, with security on the request path and cost held to that volume.",
+  },
+  {
+    name: "Ad server",
+    detail:
+      "A commercial ad server that served ads worldwide at 100,000 hits per second. Geo-directional load balancing and a global CDN delivered that content in under 100 ms.",
+  },
+  {
+    name: "Fintech",
+    detail:
+      "Commercial fintech systems that protect identity, funds, and customer data from the request path through the infrastructure.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/government"
+  imageAlt="Nitrox Studios LLC — Federal and state systems"
+>
+  <Nav audience="government" />
+  <main id="main" class="government">
+    <section class="gov-hero" aria-labelledby="gov-title">
+      <div class="container">
+        <span class="section-label">Federal and state</span>
+        <h1 id="gov-title">Fault-tolerant systems for public-sector missions.</h1>
+        <p class="section-lead">
+          Nitrox Studios LLC designs and runs systems that stay secure when the load spikes.
+          High availability and disaster recovery, protection for identity and financial data,
+          and a private cloud that stays in the United States.
+        </p>
+        <p class="identity">
+          <span>Nitrox Studios LLC</span>
+          <span>Registered in SAM.gov</span>
+          <span>UEI <code>RCEXYHX2NBH7</code></span>
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Discuss a requirement</a>
+          <a class="btn btn-ghost" href="#performance">Past performance</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="competencies" aria-labelledby="competencies-title">
+      <div class="container">
+        <header class="intro">
+          <span class="section-label">Core competencies</span>
+          <h2 class="section-title" id="competencies-title">What the work covers.</h2>
+        </header>
+        <ul class="card-list competencies">
+          {
+            competencies.map((item) => (
+              <li>
+                <h3>{item.name}</h3>
+                <p>{item.detail}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="infrastructure" aria-labelledby="infra-title">
+      <div class="container">
+        <header class="intro">
+          <span class="section-label">Infrastructure</span>
+          <h2 class="section-title" id="infra-title">A United States private cloud.</h2>
+          <p class="section-lead">
+            For federal and state work, the private cloud runs in secure data centers in
+            Ashburn, Virginia, Los Angeles, and Santa Clara. Geo-directional load balancing
+            sends each request to the nearest of those sites. AWS, Azure, and Google Cloud are
+            available when the authorization boundary calls for them.
+          </p>
+        </header>
+        <ul class="sites" aria-label="United States private cloud sites">
+          {sites.map((site) => <li>{site}</li>)}
+        </ul>
+        <p class="advisors">
+          Cryptologists, cybersecurity experts, database architects, network engineers, and
+          seasoned CTOs advise the work.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="security" aria-labelledby="security-title">
+      <div class="container">
+        <header class="intro">
+          <span class="section-label">Security</span>
+          <h2 class="section-title" id="security-title">Authorization boundary.</h2>
+          <p class="section-lead">
+            These are the standards the boundary is designed to. An authority to operate comes
+            from the agency.
+          </p>
+        </header>
+        <ul class="card-list controls">
+          {
+            controls.map((control) => (
+              <li>
+                <h3>{control.name}</h3>
+                <p>{control.detail}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="performance" aria-labelledby="performance-title">
+      <div class="container">
+        <header class="intro">
+          <span class="section-label">Past performance</span>
+          <h2 class="section-title" id="performance-title">Commercial systems at this scale.</h2>
+          <p class="section-lead">
+            Names, periods, and references can be provided to the contracting officer.
+          </p>
+        </header>
+        <ul class="card-list performance">
+          {
+            performance.map((item) => (
+              <li>
+                <h3>{item.name}</h3>
+                <p>{item.detail}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-inner">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title" id="contact-title">Talk with contracting.</h2>
+        <p class="section-lead">
+          Send the mission, the data it has to protect, and the availability it has to hold.
+        </p>
+        <a class="btn btn-primary" href="mailto:hello@nitroxstudios.com">hello@nitroxstudios.com</a>
+        <p class="identity">
+          <span>Nitrox Studios LLC</span>
+          <span>Registered in SAM.gov</span>
+          <span>UEI <code>RCEXYHX2NBH7</code></span>
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer audience="government" />
+</BaseLayout>
+
+<style>
+  .government {
+    background: var(--bg-deep);
+  }
+
+  .gov-hero {
+    padding: 8.5rem 0 4.5rem;
+    background:
+      radial-gradient(ellipse 55% 70% at 80% 0%, rgba(46, 196, 182, 0.14), transparent 60%),
+      var(--bg-deep);
+  }
+
+  .gov-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    max-width: 16ch;
+    margin-bottom: 1rem;
+  }
+
+  .gov-hero .section-lead {
+    max-width: 46ch;
+    font-size: 1.15rem;
+  }
+
+  .identity {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin-top: 1.5rem;
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+  }
+
+  .identity code {
+    font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+    letter-spacing: 0.04em;
+    color: var(--teal-bright);
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .section {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  }
+
+  .intro {
+    margin-bottom: 1.75rem;
+  }
+
+  .section-title {
+    max-width: 16ch;
+  }
+
+  .card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .competencies,
+  .performance {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .performance {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .controls {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .controls li {
+    grid-column: span 2;
+  }
+
+  .controls li:nth-child(4),
+  .controls li:nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .card-list li {
+    padding: 1.25rem 1.3rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--surface);
+  }
+
+  .card-list h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .card-list p,
+  .advisors {
+    color: var(--ink-muted);
+  }
+
+  .sites {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+    margin: 0 0 1.25rem;
+    padding: 0;
+  }
+
+  .sites li {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .sites li::before {
+    content: "";
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--teal-bright);
+    box-shadow: 0 0 8px rgba(46, 196, 182, 0.65);
+  }
+
+  .advisors {
+    max-width: 52ch;
+  }
+
+  .contact-inner {
+    max-width: 40rem;
+  }
+
+  .contact .btn {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .competencies,
+    .performance,
+    .controls {
+      grid-template-columns: 1fr;
+    }
+
+    .controls li,
+    .controls li:nth-child(4),
+    .controls li:nth-child(5) {
+      grid-column: auto;
+    }
+  }
+
+  @media print {
+    .gov-hero {
+      padding: 0 0 1rem;
+      background: none;
+    }
+
+    .government .section {
+      padding-block: 0.85rem;
+      break-inside: avoid;
+    }
+
+    .card-list li {
+      break-inside: avoid;
+      background: none;
+    }
+
+    .cta,
+    :global(.nav),
+    :global(.footer) {
+      display: none;
+    }
+  }
+</style>

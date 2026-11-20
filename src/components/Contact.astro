@@ -12,6 +12,11 @@
     <a class="btn btn-primary contact-cta" href="mailto:hello@nitroxstudios.com">
       hello@nitroxstudios.com
     </a>
+    <p class="registration">
+      <span class="legal-name">Nitrox Studios LLC</span>
+      <span>Registered in SAM.gov</span>
+      <span class="uei">UEI <code>RCEXYHX2NBH7</code></span>
+    </p>
   </div>
 </section>
 
@@ -35,5 +40,33 @@
 
   .contact-cta {
     margin-top: 1.75rem;
+  }
+
+  .registration {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+    margin-top: 1.25rem;
+    color: var(--steel);
+    font-size: 0.92rem;
+  }
+
+  .legal-name {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .uei {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--ink-muted);
+  }
+
+  .uei code {
+    font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    color: var(--teal-bright);
   }
 </style>

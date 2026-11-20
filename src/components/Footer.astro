@@ -1,22 +1,50 @@
 ---
+interface Props {
+  audience?: "commercial" | "government";
+}
+
+const { audience = "commercial" } = Astro.props;
 const year = new Date().getFullYear();
+const home = audience === "government" ? "/government" : "/";
+const links =
+  audience === "government"
+    ? [
+        { href: "/government#competencies", label: "Competencies" },
+        { href: "/government#infrastructure", label: "Infrastructure" },
+        { href: "/government#performance", label: "Past performance" },
+        { href: "/government#security", label: "Security" },
+        { href: "/government#contact", label: "Contact" },
+      ]
+    : [
+        { href: "/#systems", label: "Systems" },
+        { href: "/#infrastructure", label: "Infrastructure" },
+        { href: "/#advisory", label: "Advisory" },
+        { href: "/government", label: "Government" },
+        { href: "/software", label: "Software", quiet: true },
+        { href: "/#contact", label: "Contact" },
+      ];
 ---
 
 <footer class="footer">
   <div class="container footer-inner">
-    <a class="brand" href="/">
+    <a class="brand" href={home}>
       <img src="/brand/logo-mark.svg" width="22" height="22" alt="" decoding="async" />
       Nitrox Studios
     </a>
     <nav class="footer-links" aria-label="Footer">
-      <a href="/#systems">Systems</a>
-      <a href="/#infrastructure">Infrastructure</a>
-      <a href="/#advisory">Advisory</a>
-      <a class="footer-quiet" href="/software">Software</a>
-      <a href="/#contact">Contact</a>
+      {
+        links.map((link) => (
+          <a href={link.href} class={link.quiet ? "footer-quiet" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
       <a href="mailto:hello@nitroxstudios.com">hello@nitroxstudios.com</a>
     </nav>
-    <p class="copy">&copy; {year} Nitrox Studios</p>
+    <p class="copy">
+      &copy; {year} Nitrox Studios LLC
+      <span class="uei">SAM.gov UEI <code>RCEXYHX2NBH7</code></span>
+    </p>
   </div>
 </footer>
 
@@ -68,7 +96,16 @@ const year = new Date().getFullYear();
   }
 
   .copy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
     color: var(--steel);
     font-size: 0.85rem;
+  }
+
+  .uei code {
+    font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
   }
 </style>

@@ -35,8 +35,12 @@ html {
 
 #systems,
 #capabilities,
+#authorization-boundary,
 #infrastructure,
 #advisory,
+#competencies,
+#performance,
+#security,
 #contact,
 #products {
   scroll-margin-top: 5.25rem;

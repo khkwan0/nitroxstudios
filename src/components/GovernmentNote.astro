@@ -1,0 +1,64 @@
+---
+---
+
+<section class="government-note" aria-labelledby="government-note-title">
+  <div class="container government-note-inner reveal">
+    <div>
+      <h2 id="government-note-title">Federal and state.</h2>
+      <p>
+        Fault-tolerant systems, a United States private cloud, and the contracting details for
+        government work are on their own page.
+      </p>
+    </div>
+    <a class="government-link" href="/government">Government systems</a>
+  </div>
+</section>
+
+<style>
+  .government-note {
+    padding-block: clamp(2.25rem, 5vw, 3.5rem);
+    background: var(--bg);
+    border-block: 1px solid var(--line);
+  }
+
+  .government-note-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    color: var(--ink-muted);
+    font-size: 0.98rem;
+    max-width: 46ch;
+  }
+
+  .government-link {
+    flex-shrink: 0;
+    color: var(--teal-bright);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(94, 234, 212, 0.45);
+    padding-bottom: 0.1rem;
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+  }
+
+  .government-link:hover,
+  .government-link:focus-visible {
+    color: var(--ink);
+    border-color: var(--teal);
+  }
+
+  @media (max-width: 640px) {
+    .government-note-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

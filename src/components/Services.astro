@@ -3,7 +3,7 @@ const pillars = [
   {
     name: "Security",
     description:
-      "Security is part of the system: the request path, the data, and the place it runs. For fintech, that covers identity, funds, and customer data. Cryptologists and cybersecurity experts on our advisory board sit behind that work.",
+      "Security is an authorization boundary: the request path, the data, and the place it runs. For fintech, that covers identity, funds, and customer data. Government workloads are designed to the standards below. Cryptologists and cybersecurity experts on our advisory board sit behind that work.",
   },
   {
     name: "Scalability",
@@ -14,6 +14,31 @@ const pillars = [
     name: "Cost effectiveness",
     description:
       "Architecture and infrastructure chosen so performance at that volume stays affordable, on a private cloud or a public cloud as the economics require.",
+  },
+];
+
+const controls = [
+  {
+    name: "NIST SP 800-53",
+    detail: "Control families that define the authorization boundary.",
+  },
+  {
+    name: "FedRAMP and StateRAMP",
+    detail:
+      "Government cloud systems are built so that boundary can be assessed. The agency grants the authorization.",
+  },
+  {
+    name: "NIST SP 800-171 and CMMC",
+    detail:
+      "Controlled unclassified information is designed to SP 800-171, the baseline CMMC assesses.",
+  },
+  {
+    name: "CJIS Security Policy",
+    detail: "Criminal justice information is designed to the CJIS requirements.",
+  },
+  {
+    name: "IRS Publication 1075",
+    detail: "Federal tax information is designed to Publication 1075.",
   },
 ];
 ---
@@ -38,6 +63,23 @@ const pillars = [
         ))
       }
     </ul>
+    <div class="boundary reveal">
+      <h3 id="authorization-boundary">Authorization boundary</h3>
+      <p class="boundary-lead">
+        These are the standards the boundary is designed to. An authority to operate comes from
+        the agency.
+      </p>
+      <ul class="control-list">
+        {
+          controls.map((control) => (
+            <li>
+              <h4>{control.name}</h4>
+              <p>{control.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -79,9 +121,67 @@ const pillars = [
     color: var(--ink-muted);
   }
 
+  .boundary {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .boundary h3 {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    max-width: 18ch;
+    margin-bottom: 0.75rem;
+  }
+
+  .boundary-lead {
+    max-width: 52ch;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .control-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .control-list li {
+    grid-column: span 2;
+    padding: 1.15rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--surface);
+  }
+
+  .control-list li:nth-child(4),
+  .control-list li:nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .control-list h4 {
+    font-size: 1.02rem;
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+  }
+
+  .control-list p {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+  }
+
   @media (max-width: 800px) {
-    .pillar-list {
+    .pillar-list,
+    .control-list {
       grid-template-columns: 1fr;
+    }
+
+    .control-list li,
+    .control-list li:nth-child(4),
+    .control-list li:nth-child(5) {
+      grid-column: auto;
     }
   }
 </style>

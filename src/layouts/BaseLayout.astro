@@ -31,11 +31,18 @@ const ogImage = new URL("/og-image.png", SITE).href;
 const organizationLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Nitrox Studios",
+  name: "Nitrox Studios LLC",
+  legalName: "Nitrox Studios LLC",
+  alternateName: "Nitrox Studios",
   url: SITE,
   logo: new URL("/brand/logo-mark.svg", SITE).href,
   description: DEFAULT_DESCRIPTION,
   email: "hello@nitroxstudios.com",
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "SAM.gov UEI",
+    value: "RCEXYHX2NBH7",
+  },
   sameAs: [
     "https://bkkleague.com",
     "https://nitroxstudios.com/aula/",
@@ -61,7 +68,7 @@ const websiteLd = {
   description: DEFAULT_DESCRIPTION,
   publisher: {
     "@type": "Organization",
-    name: "Nitrox Studios",
+    name: "Nitrox Studios LLC",
     url: SITE,
   },
 };
@@ -79,7 +86,7 @@ const jsonLd = [organizationLd, websiteLd];
       name="robots"
       content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
     />
-    <meta name="author" content="Nitrox Studios" />
+    <meta name="author" content="Nitrox Studios LLC" />
     <meta name="theme-color" content="#061018" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
